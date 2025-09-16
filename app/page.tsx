@@ -49,7 +49,7 @@ export default function LoginPage() {
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="2"/>
                   <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2"/>
                 </svg>
-                Email ou nom d'utilisateur
+                Email ou nom d&apos;utilisateur
               </label>
               <input
                 type="email"

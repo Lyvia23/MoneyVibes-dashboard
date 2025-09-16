@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { MemberCard, Member } from "./MemberCard"
+import { Button } from "../ui/button"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/src/lib/utils"
 
 interface MembersGridProps {
@@ -30,7 +32,17 @@ export function MembersGrid({
   const endIndex = startIndex + itemsPerPage
   const currentMembers = members.slice(startIndex, endIndex)
 
- 
+  const goToPreviousPage = () => {
+    setCurrentPage(prev => Math.max(prev - 1, 1))
+  }
+
+  const goToNextPage = () => {
+    setCurrentPage(prev => Math.min(prev + 1, totalPages))
+  }
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page)
+  }
 
   if (members.length === 0) {
     return (
@@ -47,7 +59,7 @@ export function MembersGrid({
   }
 
   return (
-    <div className={cn("space-y-2", className)}>
+    <div className={cn("space-y-6", className)}>
       {/* Grille des membres - 4 colonnes */}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {currentMembers.map((member) => (
@@ -64,10 +76,49 @@ export function MembersGrid({
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-center pt-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-500">
             Affichage de {startIndex + 1} à {Math.min(endIndex, members.length)} sur {members.length} membres
           </p>
+          
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={goToPreviousPage}
+              disabled={currentPage === 1}
+              className="flex items-center gap-1"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Précédent
+            </Button>
+            
+            {/* Numéros de pages */}
+            <div className="flex items-center gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <Button
+                  key={page}
+                  variant={currentPage === page ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => goToPage(page)}
+                  className="w-8 h-8 p-0"
+                >
+                  {page}
+                </Button>
+              ))}
+            </div>
+            
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={goToNextPage}
+              disabled={currentPage === totalPages}
+              className="flex items-center gap-1"
+            >
+              Suivant
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
       )}
     </div>

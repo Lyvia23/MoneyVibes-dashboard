@@ -132,7 +132,7 @@ export function JournalAudit() {
     <Card>
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="text-xl font-semibold">Journal d\'audit</CardTitle>
+          <CardTitle className="text-xl font-semibold">Journal d&apos;audit</CardTitle>
           
           <div className="flex items-center space-x-2">
             <DropdownMenu>
@@ -224,7 +224,7 @@ export function JournalAudit() {
             <div className="text-center py-8">
               <p className="text-gray-500">Aucun événement trouvé</p>
               <p className="text-gray-400 text-sm mt-1">
-                Essayez de modifier le filtre d\'actions
+                Essayez de modifier le filtre d d&apos;actions
               </p>
             </div>
           )}

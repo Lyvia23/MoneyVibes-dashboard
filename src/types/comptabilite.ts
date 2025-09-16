@@ -1,12 +1,13 @@
+import { LucideIcon } from 'lucide-react'
+
 export interface StatistiqueComptable {
   label: string
   value: string
-  icon: any
+  icon: LucideIcon
   iconColor?: string
   iconBgColor?: string
   className?: string
 }
-
 export interface DonneeFlux {
   mois: string
   cotisations: number

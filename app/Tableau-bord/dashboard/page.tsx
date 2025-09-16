@@ -6,13 +6,14 @@ import { PretsChart } from "@/src/components/dashboard/PretsChart"
 import { StatsGrid } from "@/src/components/dashboard/StatsCard"
 import { PageWithHeader } from "@/src/components/PageWithHeader"
 import { DashboardData, NotificationData } from "@/src/types/dashboard"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null)
 
-  const mockData: DashboardData = {
+  // Utilisation d'useMemo pour éviter la recréation de mockData à chaque rendu
+  const mockData: DashboardData = useMemo(() => ({
     stats: [
       {
         id: "1",
@@ -111,9 +112,7 @@ export default function DashboardPage() {
       totalPages: 14,
       totalItems: 140
     }
-  }
-
-
+  }), [])
 
   // Simulation du chargement des données
   useEffect(() => {
@@ -128,7 +127,6 @@ export default function DashboardPage() {
     loadData()
   }, [mockData])
 
-
   const handleNotificationAction = (notification: NotificationData) => {
     console.log("Notification action:", notification)
     if (notification.actionUrl) {
@@ -136,73 +134,68 @@ export default function DashboardPage() {
     }
   }
 
-
   return (
-
-     <PageWithHeader
+    <PageWithHeader
       title="Tableau de bord"
       description="Vue d'ensemble de votre tontine"
     >
-        <div className="flex-1 w-full bg-gray-50/50 p-6">
-     
-
-      {/* Grille des statistiques */}
-      <div className="mb-8">
-        <StatsGrid 
-          data={dashboardData?.stats || []} 
-          loading={loading}
-          className="mb-8"
-        />
-      </div>
-
-      {/* Graphiques principaux */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        <CotisationsChart
-          data={dashboardData?.cotisations || []}
-          loading={loading}
-          className="h-fit"
-        />
-        
-        <PretsChart
-          data={dashboardData?.pretsStatus || []}
-          loading={loading}
-          className="h-fit"
-        />
-      </div>
-
-      {/* Section des notifications */}
-      <div className="mb-8">
-        <Notifications
-          data={dashboardData?.notifications || []}
-          loading={loading}
-          onAction={handleNotificationAction}
-        />
-      </div>
-
-      {/* Pagination */}
-      {dashboardData && (
-        <div className="flex items-center justify-center gap-4 py-6">
-          <button
-            className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:opacity-50"
-            disabled={dashboardData.pagination.currentPage === 1}
-          >
-            Précédent
-          </button>
-          
-          <span className="text-sm text-gray-600">
-            {dashboardData.pagination.currentPage} / {dashboardData.pagination.totalPages}
-          </span>
-          
-          <button
-            className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:opacity-50"
-            disabled={dashboardData.pagination.currentPage === dashboardData.pagination.totalPages}
-          >
-            Suivant
-          </button>
+      <div className="flex-1 w-full bg-gray-50/50 p-6">
+        {/* Grille des statistiques */}
+        <div className="mb-8">
+          <StatsGrid 
+            data={dashboardData?.stats || []} 
+            loading={loading}
+            className="mb-8"
+          />
         </div>
-      )}
-    </div>
+
+        {/* Graphiques principaux */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <CotisationsChart
+            data={dashboardData?.cotisations || []}
+            loading={loading}
+            className="h-fit"
+          />
+          
+          <PretsChart
+            data={dashboardData?.pretsStatus || []}
+            loading={loading}
+            className="h-fit"
+          />
+        </div>
+
+        {/* Section des notifications */}
+        <div className="mb-8">
+          <Notifications
+            data={dashboardData?.notifications || []}
+            loading={loading}
+            onAction={handleNotificationAction}
+          />
+        </div>
+
+        {/* Pagination */}
+        {dashboardData && (
+          <div className="flex items-center justify-center gap-4 py-6">
+            <button
+              className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:opacity-50"
+              disabled={dashboardData.pagination.currentPage === 1}
+            >
+              Précédent
+            </button>
+            
+            <span className="text-sm text-gray-600">
+              {dashboardData.pagination.currentPage} / {dashboardData.pagination.totalPages}
+            </span>
+            
+            <button
+              className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:opacity-50"
+              disabled={dashboardData.pagination.currentPage === dashboardData.pagination.totalPages}
+            >
+              Suivant
+            </button>
+          </div>
+        )}
+      </div>
     </PageWithHeader>
-  
   )
 }
