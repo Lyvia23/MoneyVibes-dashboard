@@ -1,4 +1,3 @@
-// components/BarreRechercheTickets.tsx
 "use client"
 import { Search, ChevronDown, Plus } from "lucide-react"
 import { Input } from "../ui/input"

@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Badge } from "../ui/badge";
 import { Upload, Search, CheckCircle, XCircle } from "lucide-react";
 import { ActionHistorique } from "@/src/types/kyc";
 

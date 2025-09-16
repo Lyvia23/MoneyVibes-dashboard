@@ -1,11 +1,10 @@
 "use client"
 
-import { Ticket, Clock, CheckCircle, Timer, Plus } from "lucide-react"
+import { Ticket, Clock, CheckCircle, Timer } from "lucide-react"
 
 import { PageWithHeader } from "@/src/components/PageWithHeader"
 import { StatsCard } from "@/src/components/StatsCard";
 import { OngletSupport } from "@/src/components/support-audit/OngletSupport";
-import { Button } from "@/src/components/ui/button";
 import { JournalAudit } from "@/src/components/support-audit/JournalAudit";
 import { ListeTickets } from "@/src/components/support-audit/ListeTickets";
 

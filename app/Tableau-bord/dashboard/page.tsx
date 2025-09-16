@@ -2,7 +2,6 @@
 "use client"
 
 import { CotisationsChart } from "@/src/components/dashboard/CotisationsChart"
-import { DashboardHeader } from "@/src/components/dashboard/DashboardHeader"
 import { Notifications } from "@/src/components/dashboard/Notifications"
 import { PretsChart } from "@/src/components/dashboard/PretsChart"
 import { StatsGrid } from "@/src/components/dashboard/StatsCard"

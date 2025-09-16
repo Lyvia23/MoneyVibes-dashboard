@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { PageWithHeader } from '@/src/components/PageWithHeader';
 import { Button } from '@/src/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/src/components/ui/card';
+import { Card, CardContent} from '@/src/components/ui/card';
 import { Badge } from '@/src/components/ui/badge';
 import { Eye, User } from 'lucide-react';
 

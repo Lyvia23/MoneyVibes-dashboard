@@ -1,7 +1,6 @@
 "use client"
 
 import { Card, CardContent } from "@/src/components/ui/card"
-import { Badge } from "@/src/components/ui/badge"
 import { Button } from "@/src/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar"
 import {
@@ -11,9 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/src/components/ui/dropdown-menu"
 import { 
-  Phone, 
-  Calendar,
-  CreditCard,
+
   MoreVertical,
   Eye,
   Edit,

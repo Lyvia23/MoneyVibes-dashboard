@@ -3,7 +3,6 @@ import { ListeMembresRisque } from "@/src/components/analyse-risques/ListeMembre
 import { ScoreGlobalRisque } from "@/src/components/analyse-risques/ScoreGlobalRisque"
 import { StatistiquesRisques } from "@/src/components/analyse-risques/StatistiquesRisques"
 import { PageWithHeader } from "@/src/components/PageWithHeader"
-import { Users, Clock, AlertTriangle, TrendingUp } from "lucide-react"
 
 
 export default function AnalyseDesRisques() {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { ActionHistorique, DocumentIdentite, UtilisateurKYC, VerificationStatut } from '@/src/types/kyc';
 import { InformationsUtilisateur } from '@/src/components/kyc/InformationsUtilisateur';

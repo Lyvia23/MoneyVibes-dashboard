@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { Ticket, MessageCircle, Search } from "lucide-react"
-import { Button } from "../ui/button"
 import { cn } from "@/src/lib/utils"
 
 const onglets = [

@@ -1,12 +1,7 @@
-// components/ListeMembresRisque.tsx
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
-import { Badge } from "../ui/badge"
 import { Button } from "../ui/button"
-import { Input } from "../ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
-import { Search, Download } from "lucide-react"
+import { Download } from "lucide-react"
 import { CarteMembre } from "./CarteMembre"
 import { FiltresRisque } from "./FiltresRisque"
 

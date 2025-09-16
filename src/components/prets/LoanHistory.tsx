@@ -3,13 +3,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Badge } from "../ui/badge"
 import { Button } from "../ui/button"
 import { Progress } from "../ui/progress"
-import { Edit, Eye, MoreHorizontal, Trash2 } from "lucide-react"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu"
+import { Edit, Eye, Trash2 } from "lucide-react"
+
 import {
   Select,
   SelectContent,

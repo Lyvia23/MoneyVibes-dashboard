@@ -2,8 +2,6 @@
 
 import { useState } from "react"
 import { MemberCard, Member } from "./MemberCard"
-import { Button } from "@/src/components/ui/button"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/src/lib/utils"
 
 interface MembersGridProps {
