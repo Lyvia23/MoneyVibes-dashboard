@@ -52,3 +52,9 @@ export interface ApiResponse<T> {
   message?: string
   error?: string
 }
+export interface TooltipPayload {
+  name: string
+  count: number
+  value: number
+  payload: PretStatusData
+}
