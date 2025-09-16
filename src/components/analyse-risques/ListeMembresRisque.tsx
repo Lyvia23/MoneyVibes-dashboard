@@ -4,24 +4,15 @@ import { Button } from "../ui/button"
 import { Download } from "lucide-react"
 import { CarteMembre } from "./CarteMembre"
 import { FiltresRisque } from "./FiltresRisque"
+import { MembreRisque } from "@/src/types/analyse-risques"
 
-// Types pour les données des membres
-export interface MembreRisque {
-  id: string
-  nom: string
-  prenom: string
-  avatar?: string
-  membreDepuis: number
-  scoreRisque: number
-  niveauRisque: "ÉLEVÉ" | "MOYEN" | "FAIBLE"
-  problemes: string[]
-}
+
+
 
 interface ListeMembresRisqueProps {
   membres?: MembreRisque[]
   className?: string
 }
-
 const membresParDefaut: MembreRisque[] = [
   {
     id: "1",
@@ -72,7 +63,7 @@ const membresParDefaut: MembreRisque[] = [
 
 export function ListeMembresRisque({ 
   membres = membresParDefaut,
-  className 
+
 }: ListeMembresRisqueProps) {
   const [rechercheTexte, setRechercheTexte] = useState("")
   const [filtreNiveau, setFiltreNiveau] = useState<string>("tous")

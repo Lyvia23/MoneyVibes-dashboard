@@ -1,15 +1,9 @@
 "use client"
 
+import { StatistiqueComptable } from "@/src/types/comptabilite"
 import { StatsCard } from "../StatsCard"
 
-interface StatistiqueComptable {
-  label: string
-  value: string
-  icon: any
-  iconColor?: string
-  iconBgColor?: string
-  className?: string
-}
+
 
 interface SectionStatsProps {
   statistiques: StatistiqueComptable[]

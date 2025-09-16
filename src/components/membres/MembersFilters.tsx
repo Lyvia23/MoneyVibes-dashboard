@@ -67,7 +67,7 @@ export function MembersFilters({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="name">Nom</SelectItem>
-            <SelectItem value="joinDate">Date d'adhésion</SelectItem>
+            <SelectItem value="joinDate">Date d\'adhésion</SelectItem>
             <SelectItem value="contributions">Cotisations</SelectItem>
             <SelectItem value="status">Statut</SelectItem>
           </SelectContent>

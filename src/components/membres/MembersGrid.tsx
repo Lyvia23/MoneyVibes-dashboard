@@ -30,9 +30,7 @@ export function MembersGrid({
   const endIndex = startIndex + itemsPerPage
   const currentMembers = members.slice(startIndex, endIndex)
 
-  const goToPage = (page: number) => {
-    setCurrentPage(Math.max(1, Math.min(totalPages, page)))
-  }
+ 
 
   if (members.length === 0) {
     return (

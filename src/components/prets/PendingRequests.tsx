@@ -29,7 +29,7 @@ const purposeColors = {
   Personnel: "bg-gray-100 text-gray-800"
 }
 
-export function PendingRequests({ requests, onApprove, onReject }: PendingRequestsProps) {
+export function PendingRequests({ requests }: PendingRequestsProps) {
   const getInitials = (name: string) => {
     return name.split(' ').map(n => n[0]).join('').toUpperCase()
   }

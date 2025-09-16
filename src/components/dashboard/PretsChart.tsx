@@ -12,6 +12,11 @@ interface PretsChartProps {
   loading?: boolean
   className?: string
 }
+interface CustomTooltipProps {
+  active?: boolean
+  payload?: TooltipPayload[]
+}
+
 
 export function PretsChart({ data, loading, className }: PretsChartProps) {
   if (loading) {
@@ -36,8 +41,8 @@ export function PretsChart({ data, loading, className }: PretsChartProps) {
 
   const total = data.reduce((sum, item) => sum + item.count, 0)
 
-  const CustomTooltip = ({ active, payload }: any) => {
-    if (active && payload && payload.length) {
+  const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
+    if (active && payload && payload.length > 0) {
       const data = payload[0].payload
       return (
         <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">

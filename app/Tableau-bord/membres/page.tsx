@@ -161,15 +161,6 @@ export default function MembersPage() {
     // Ajouter votre logique de contact
   }
 
-  const handleAddMember = () => {
-    console.log("Ajouter nouveau membre")
-    // Ajouter votre logique d'ajout
-  }
-
-  const handleExport = () => {
-    console.log("Exporter les membres")
-    // Ajouter votre logique d'export
-  }
 
   return (
     <PageWithHeader

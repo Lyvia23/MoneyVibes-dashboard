@@ -5,9 +5,11 @@ import { Badge } from "../ui/badge"
 import { AlertCircle, Clock, TrendingUp, CheckCircle, Star } from "lucide-react"
 import { MembreRisque } from "@/src/types/analyse-risques"
 
+
 interface CarteMembreProps {
   membre: MembreRisque
 }
+
 
 export function CarteMembre({ membre }: CarteMembreProps) {
   // Fonction pour obtenir les couleurs selon le niveau de risque

@@ -59,9 +59,9 @@ export function DashboardHeader({
           <h1 className="text-3xl font-bold tracking-tight text-gray-900">
             Tableau de bord administrateur
           </h1>
-          <p className="text-muted-foreground">
-            Vue d'ensemble de votre tontine
-          </p>
+         <p className="text-muted-foreground">
+  Vue d&apos;ensemble de votre tontine
+</p>
         </div>
 
         {/* Actions et profil utilisateur */}

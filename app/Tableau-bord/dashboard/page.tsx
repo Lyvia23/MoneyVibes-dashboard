@@ -1,4 +1,3 @@
-// app/dashboard/page.tsx
 "use client"
 
 import { CotisationsChart } from "@/src/components/dashboard/CotisationsChart"
@@ -13,7 +12,6 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null)
 
-  // Données de démonstration (remplace par tes appels API)
   const mockData: DashboardData = {
     stats: [
       {
@@ -128,24 +126,8 @@ export default function DashboardPage() {
     }
 
     loadData()
-  }, [])
+  }, [mockData])
 
-  // Handlers pour les actions utilisateur
-  const handleNotificationClick = () => {
-    console.log("Notifications clicked")
-  }
-
-  const handleProfileClick = () => {
-    console.log("Profile clicked")
-  }
-
-  const handleSettingsClick = () => {
-    console.log("Settings clicked")
-  }
-
-  const handleLogoutClick = () => {
-    console.log("Logout clicked")
-  }
 
   const handleNotificationAction = (notification: NotificationData) => {
     console.log("Notification action:", notification)
@@ -154,7 +136,6 @@ export default function DashboardPage() {
     }
   }
 
-  const unreadNotifications = dashboardData?.notifications.filter(n => !n.isRead).length || 0
 
   return (
 

@@ -14,16 +14,8 @@ import {
   TableRow,
 } from "../ui/table"
 import { Search, ChevronLeft, ChevronRight } from "lucide-react"
+import { TransactionComptable } from "@/src/types/comptabilite"
 
-interface TransactionComptable {
-  id: string
-  date: string
-  description: string
-  categorie: string
-  recettes: number | null
-  depenses: number | null
-  solde: number
-}
 
 interface GrandLivreComptableProps {
   transactions: TransactionComptable[]

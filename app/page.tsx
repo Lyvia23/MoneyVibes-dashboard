@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, Users, TrendingUp, BarChart3 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -11,21 +12,12 @@ export default function LoginPage() {
   const [rememberMe, setRememberMe] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = (e:any) => {
+ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Redirection vers le dashboard peu importe les credentials
     router.push('/Tableau-bord/dashboard');
   };
 
-  const handleGoogleLogin = () => {
-    // Redirection vers le dashboard
-    router.push('/Tableau-bord/dashboard');
-  };
-
-  const handleMicrosoftLogin = () => {
-    // Redirection vers le dashboard
-    router.push('/Tableau-bord/dashboard');
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50 flex items-center justify-center p-4">
@@ -107,9 +99,9 @@ export default function LoginPage() {
                 />
                 Se souvenir de moi
               </label>
-              <a href="#" className="text-orange-500 hover:text-orange-600 transition-colors">
-                Mot de passe oublié ?
-              </a>
+              <Link  href="#" className="text-orange-500 hover:text-orange-600 transition-colors">
+                Mot de passe oublié&nbsp;?
+              </Link>
             </div>
 
             {/* Bouton de connexion */}

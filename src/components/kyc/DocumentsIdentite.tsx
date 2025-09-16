@@ -11,7 +11,7 @@ export function DocumentsIdentite({ documents }: DocumentsIdentiteProps) {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="text-xl">Documents d'identité</CardTitle>
+        <CardTitle className="text-xl">Documents d\'identité</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -19,7 +19,7 @@ export function DocumentsIdentite({ documents }: DocumentsIdentiteProps) {
             <div key={doc.id} className="space-y-3">
               <div className="flex items-center justify-between">
                 <h3 className="font-medium">
-                  Carte d'identité ({doc.type === 'recto' ? 'Recto' : 'Verso'})
+                  Carte d\'identité ({doc.type === 'recto' ? 'Recto' : 'Verso'})
                 </h3>
                 <Badge variant="outline" className="text-xs">
                   {doc.type === 'recto' ? 'Carte Nationale d\'Identité' : 'Verso de la CNI'}

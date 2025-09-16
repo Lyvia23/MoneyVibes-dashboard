@@ -1,26 +1,32 @@
 "use client"
 
+import { DonneeFlux } from "@/src/types/comptabilite"
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Legend, Tooltip } from "recharts"
 
-interface DonneeFlux {
-  mois: string
-  cotisations: number
-  pretsAccordes: number
-  remboursements: number
-}
 
 interface GraphiqueFluxFinancierProps {
   donnees: DonneeFlux[]
 }
+interface TooltipPayloadEntry {
+  name: string
+  value: number
+  color: string
+}
+
+interface TooltipProps {
+  active?: boolean
+  payload?: TooltipPayloadEntry[]
+  label?: string
+}
 
 // Composant personnalisé pour le tooltip
-const TooltipPersonnalise = ({ active, payload, label }: any) => {
+const TooltipPersonnalise = ({ active, payload, label }: TooltipProps) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
         <p className="font-medium text-gray-900 mb-2">{label}</p>
-        {payload.map((entry: any, index: number) => (
+        {payload.map((entry, index) => (
           <p key={index} className="text-sm" style={{ color: entry.color }}>
             {entry.name}: {entry.value.toLocaleString('fr-FR')} FCFA
           </p>
