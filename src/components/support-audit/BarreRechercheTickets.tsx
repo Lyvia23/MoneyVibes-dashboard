@@ -20,7 +20,7 @@ interface BarreRechercheTicketsProps {
   afficherNouveauTicket?: boolean
 }
 
-export function BarreRechercheTickets({
+export default function BarreRechercheTickets({
   recherche,
   setRecherche,
   statutFiltre,
@@ -31,9 +31,9 @@ export function BarreRechercheTickets({
   afficherNouveauTicket = true
 }: BarreRechercheTicketsProps) {
   return (
-    <div className="flex items-center justify-between w-full">
-      {/* Barre de recherche à gauche */}
-      <div className="relative w-80">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full gap-4">
+      {/* Barre de recherche */}
+      <div className="relative w-full sm:w-80">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
         <Input
           placeholder={placeholder}
@@ -43,21 +43,25 @@ export function BarreRechercheTickets({
         />
       </div>
 
-      {/* Contrôles à droite */}
-      <div className="flex items-center gap-4">
+      {/* Contrôles */}
+      <div className="flex items-center gap-4 w-full sm:w-auto">
         {/* Dropdown statut */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline">
-              {optionsStatut.find(option => option.value === statutFiltre)?.label}
+            <Button variant="outline" className="min-w-fit">
+              <span className="hidden sm:inline">
+                {optionsStatut.find(option => option.value === statutFiltre)?.label}
+              </span>
+              <span className="sm:hidden">Filtre</span>
               <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" className="bg-white border shadow-md z-50">
             {optionsStatut.map((option) => (
               <DropdownMenuItem
                 key={option.value}
                 onClick={() => setStatutFiltre(option.value)}
+                className="hover:bg-gray-50"
               >
                 {option.label}
               </DropdownMenuItem>
@@ -69,10 +73,11 @@ export function BarreRechercheTickets({
         {afficherNouveauTicket && (
           <Button
             onClick={onNouveauTicket}
-            className="bg-orange-500 hover:bg-orange-600 text-white"
+            className="bg-orange-500 hover:bg-orange-600 text-white flex-shrink-0"
           >
             <Plus className="h-4 w-4 mr-2" />
-            Nouveau ticket
+            <span className="hidden sm:inline">Nouveau ticket</span>
+            <span className="sm:hidden">Nouveau</span>
           </Button>
         )}
       </div>

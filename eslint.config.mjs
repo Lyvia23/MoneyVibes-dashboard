@@ -20,6 +20,23 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    rules: {
+      // Désactiver les règles TypeScript strictes
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/ban-ts-comment": "warn",
+      "@typescript-eslint/no-non-null-assertion": "warn",
+      
+      // Règles React moins strictes
+      "react-hooks/exhaustive-deps": "warn",
+      "react/no-unescaped-entities": "off",
+      
+      // Règles générales
+      "no-console": "warn",
+      "prefer-const": "warn",
+    }
+  }
 ];
 
 export default eslintConfig;

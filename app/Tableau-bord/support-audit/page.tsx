@@ -5,8 +5,8 @@ import { Ticket, Clock, CheckCircle, Timer } from "lucide-react"
 import { PageWithHeader } from "@/src/components/PageWithHeader"
 import { StatsCard } from "@/src/components/StatsCard";
 import { OngletSupport } from "@/src/components/support-audit/OngletSupport";
-import { JournalAudit } from "@/src/components/support-audit/JournalAudit";
-import { ListeTickets } from "@/src/components/support-audit/ListeTickets";
+import SupportDashboard from "@/src/components/support-audit/SupportDashboard";
+import JournalAudit from "@/src/components/support-audit/JournalAudit";
 
 // Données pour les stats
 const donneesStats = [
@@ -43,8 +43,8 @@ const donneesStats = [
 export default function SupportAuditPage() {
   return (
      <PageWithHeader
-                title="Gestion des prêts"
-                description="Gérez les demandes et remboursements de prêts"
+                title="Support & Audit"
+                description="Gestion des réclamations, assistance et vérifications système"
             >
                 <div className="space-y-6 p-6">
       
@@ -57,10 +57,9 @@ export default function SupportAuditPage() {
 
         {/* Onglets et contenu */}
         <div className="space-y-6">
-          <OngletSupport />
           
       
-          <ListeTickets />
+          <SupportDashboard />
           <JournalAudit />
         </div>
       </div>

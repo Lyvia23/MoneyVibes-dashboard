@@ -1,8 +1,8 @@
 "use client"
 
 import { PageWithHeader } from "@/src/components/PageWithHeader"
-import { LoanHistory } from "@/src/components/prets/LoanHistory"
 import { PendingRequests } from "@/src/components/prets/PendingRequests"
+import { PretsHistorique } from "@/src/components/prets/PretsHistorique"
 import { RepaymentRate } from "@/src/components/prets/RepaymentRate"
 import { StatsGrid } from "@/src/components/prets/StatsGrid"
 import { UpcomingRepayments } from "@/src/components/prets/UpcomingRepayments"
@@ -219,7 +219,7 @@ export default function LoanManagementPage() {
 
                 {/* Section inférieure - Historique des prêts */}
                 <div>
-                    <LoanHistory
+                    <PretsHistorique
                         loans={loanHistory}
                         onStatusFilter={handleStatusFilter}
                         onViewDetails={handleViewDetails}

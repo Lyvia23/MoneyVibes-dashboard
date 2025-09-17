@@ -12,33 +12,13 @@ interface PretsChartProps {
   loading?: boolean
   className?: string
 }
+
 interface CustomTooltipProps {
   active?: boolean
   payload?: TooltipPayload[]
 }
 
-
 export function PretsChart({ data, loading, className }: PretsChartProps) {
-  if (loading) {
-    return (
-      <Card className={className}>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-lg font-semibold">
-            Statut des prêts
-          </CardTitle>
-          <Button variant="ghost" size="sm">
-            <MoreHorizontal className="h-4 w-4" />
-          </Button>
-        </CardHeader>
-        <CardContent>
-          <div className="h-80 animate-pulse bg-gray-100 rounded-lg flex items-center justify-center">
-            <div className="text-sm text-muted-foreground">Chargement du graphique...</div>
-          </div>
-        </CardContent>
-      </Card>
-    )
-  }
-
   const total = data.reduce((sum, item) => sum + item.count, 0)
 
   const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
@@ -46,8 +26,8 @@ export function PretsChart({ data, loading, className }: PretsChartProps) {
       const data = payload[0].payload
       return (
         <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
-          <p className="font-medium">{data.name}</p>
-          <p className="text-sm text-muted-foreground">
+          <p className="font-medium text-sm">{data.name}</p>
+          <p className="text-xs text-muted-foreground">
             {data.count} prêts ({data.value}%)
           </p>
         </div>
@@ -56,26 +36,46 @@ export function PretsChart({ data, loading, className }: PretsChartProps) {
     return null
   }
 
+  if (loading) {
+    return (
+      <Card className={`flex flex-col ${className}`}>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 px-4 md:px-6">
+          <CardTitle className="text-base md:text-lg font-semibold">
+            Statut des prêts
+          </CardTitle>
+          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        </CardHeader>
+        <CardContent className="flex-1 px-4 md:px-6 pb-4 md:pb-6">
+          <div className="h-64 md:h-72 animate-pulse bg-gray-100 rounded-lg flex items-center justify-center">
+            <div className="text-sm text-muted-foreground">Chargement du graphique...</div>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
+
   return (
-    <Card className={className}>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-lg font-semibold">
+    <Card className={`flex flex-col ${className}`}>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 px-4 md:px-6">
+        <CardTitle className="text-base md:text-lg font-semibold">
           Statut des prêts
         </CardTitle>
-        <Button variant="ghost" size="sm">
+        <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </CardHeader>
-      <CardContent>
-        <div className="h-80">
+      <CardContent className="flex-1 px-4 md:px-6 pb-4 md:pb-6">
+        <div className="h-64 md:h-72">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
                 data={data}
                 cx="50%"
                 cy="50%"
-                outerRadius={100}
-                innerRadius={50}
+                outerRadius="70%"
+                innerRadius="45%"
                 paddingAngle={2}
                 dataKey="value"
                 animationBegin={0}
@@ -95,36 +95,38 @@ export function PretsChart({ data, loading, className }: PretsChartProps) {
           </ResponsiveContainer>
         </div>
 
-        {/* Légende personnalisée avec plus de détails */}
-        <div className="mt-6 space-y-3">
-          {data.map((item, index) => (
-            <div key={index} className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div 
-                  className="w-3 h-3 rounded-full flex-shrink-0" 
-                  style={{ backgroundColor: item.color }}
-                />
-                <span className="text-sm font-medium">{item.name}</span>
+        {/* Légende personnalisée avec hauteur contrôlée */}
+        <div className="mt-4 space-y-2 min-h-[120px] flex flex-col justify-between">
+          <div className="space-y-2">
+            {data.map((item, index) => (
+              <div key={index} className="flex items-center justify-between">
+                <div className="flex items-center gap-2 min-w-0">
+                  <div 
+                    className="w-3 h-3 rounded-full flex-shrink-0" 
+                    style={{ backgroundColor: item.color }}
+                  />
+                  <span className="text-xs md:text-sm font-medium truncate">{item.name}</span>
+                </div>
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <Badge variant="secondary" className="text-xs h-5 px-2">
+                    {item.count}
+                  </Badge>
+                  <span className="text-xs md:text-sm text-muted-foreground min-w-[2.5rem] text-right">
+                    {item.value}%
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Badge variant="secondary" className="text-xs">
-                  {item.count}
-                </Badge>
-                <span className="text-sm text-muted-foreground min-w-[3rem] text-right">
-                  {item.value}%
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Résumé total */}
-        <div className="mt-6 pt-4 border-t">
-          <div className="flex justify-between items-center">
-            <span className="text-sm font-medium">Total des prêts</span>
-            <Badge variant="outline" className="font-semibold">
-              {total}
-            </Badge>
+          {/* Résumé total - hauteur fixe pour alignement */}
+          <div className="pt-3 border-t">
+            <div className="flex justify-between items-center">
+              <span className="text-xs md:text-sm font-medium">Total des prêts</span>
+              <Badge variant="outline" className="font-semibold text-xs h-5 px-2">
+                {total}
+              </Badge>
+            </div>
           </div>
         </div>
       </CardContent>

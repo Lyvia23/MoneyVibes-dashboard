@@ -80,26 +80,31 @@ export function ContributionForm({ members, onSubmit }: ContributionFormProps) {
               <Label htmlFor="member" className="text-sm font-medium text-gray-700">
                 Membre
               </Label>
-              <Select
-                value={formData.memberId}
-                onValueChange={(value) => setFormData(prev => ({ ...prev, memberId: value }))}
-              >
-                <SelectTrigger className="h-12 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                  <SelectValue placeholder="Sélectionner un membre" className="text-base" />
-                </SelectTrigger>
-                <SelectContent>
-                  {members.map((member) => (
-                    <SelectItem key={member.id} value={member.id}>
-                      <div className="flex flex-col">
-                        <span className="font-medium">{member.name}</span>
-                        <span className="text-sm text-gray-500">{member.phone}</span>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                  <Select
+              value={formData.memberId}
+              onValueChange={(value) => setFormData(prev => ({ ...prev, memberId: value }))}
+            >
+              <SelectTrigger className="h-12 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <SelectValue placeholder="Sélectionner un membre" className="text-base" />
+              </SelectTrigger>
+              <SelectContent className="bg-white border border-gray-200 shadow-lg z-[1000]">
+                {members.map((member) => (
+                  <SelectItem
+                    key={member.id}
+                    value={member.id}
+                    className="bg-white hover:bg-gray-100 focus:bg-gray-100"
+                  >
+                    <div className="flex flex-col">
+                      <span className="font-medium">{member.name}</span>
+                      <span className="text-sm text-gray-500">{member.phone}</span>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+           
             </div>
-
+        
             {/* Montant */}
             <div className="space-y-2">
               <Label htmlFor="amount" className="text-sm font-medium text-gray-700">

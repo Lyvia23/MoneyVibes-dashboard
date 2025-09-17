@@ -78,11 +78,11 @@ export function FiltresRisque({
       </div>
 
       {/* Bouton Exporter */}
-      <div className="space-y-2">
+      <div className="space-y-2 w-full sm:w-auto">
         <label className="text-sm font-medium text-gray-700 invisible">
           Actions
         </label>
-        <Button className="bg-orange-500 hover:bg-orange-600 text-white gap-2">
+        <Button className="bg-orange-500 w-full hover:bg-orange-600 text-white gap-2">
           <Download className="h-4 w-4" />
           Exporter
         </Button>

@@ -1,6 +1,5 @@
 "use client"
 
-import { FiltresComptabilite } from "@/src/components/comptabilité/FiltresComptabilite"
 import { GrandLivreComptable } from "@/src/components/comptabilité/GrandLivreComptable"
 import { GraphiqueFluxFinancier } from "@/src/components/comptabilité/GraphiqueFluxFinancier"
 import { SectionStats } from "@/src/components/comptabilité/SectionStats"
@@ -117,13 +116,11 @@ export default function PageComptabilite() {
       title="Comptabilité"
       description="Suivi des finances globales et grand livre comptable"
     >
-      <div className="space-y-6 p-6">
+      <div className="space-y-6 p-6 overflow-x-hidden ">
         {/* Section des statistiques */}
         <SectionStats statistiques={statistiques} />
 
-        {/* Section des filtres */}
-        <FiltresComptabilite />
-
+       
         {/* Section du graphique */}
         <GraphiqueFluxFinancier donnees={donneesFlux} />
 

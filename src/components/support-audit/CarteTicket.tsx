@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from "../ui/card"
 import { Badge } from "../ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { cn } from "@/src/lib/utils"
-import { Ticket } from "./ListeTickets"
+import { Ticket } from "./SupportDashboard"
 
 interface CarteTicketProps {
   ticket: Ticket
@@ -42,7 +42,7 @@ const configPriorite = {
   }
 }
 
-export function CarteTicket({ ticket }: CarteTicketProps) {
+export default function CarteTicket({ ticket }: CarteTicketProps) {
   const statutConfig = configStatut[ticket.statut]
   const prioriteConfig = configPriorite[ticket.priorite]
 

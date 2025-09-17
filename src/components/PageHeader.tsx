@@ -56,33 +56,33 @@ export function PageHeader({
   }
 
   return (
-    <div className={cn("mb-12  p-6 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60", className)}>
-      <div className="flex h-16 items-center justify-between px-6 mb-12">
+    <div className={cn("border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm", className)}>
+      <div className="flex h-16 items-center justify-between px-4 md:px-6">
         {/* Titre et description */}
-        <div className="space-y-1">
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">
+        <div className="space-y-0.5">
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
             {title}
           </h1>
-          <p className="text-xl text-muted-foreground ">
+          <p className="text-sm md:text-base mb-2 text-muted-foreground">
             {description}
           </p>
         </div>
 
         {/* Actions et profil utilisateur */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           {/* Notifications */}
           <div className="relative">
             <Button
               variant="ghost"
               size="icon"
               onClick={onNotificationClick}
-              className="relative"
+              className="relative h-9 w-9"
             >
-              <Bell className="h-5 w-5" />
+              <Bell className="h-4 w-4 md:h-5 md:w-5" />
               {notificationCount > 0 && (
                 <Badge 
                   variant="destructive" 
-                  className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                  className="absolute -top-1 -right-1 h-4 w-4 flex items-center justify-center p-0 text-xs font-medium"
                 >
                   {notificationCount > 9 ? '9+' : notificationCount}
                 </Badge>
@@ -93,16 +93,16 @@ export function PageHeader({
           {/* Menu utilisateur */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="flex items-center gap-3 h-auto p-2">
-                <Avatar className="h-10 w-10">
+              <Button variant="ghost" className="flex items-center gap-2 md:gap-3 h-auto p-1.5 md:p-2 rounded-lg hover:bg-accent">
+                <Avatar className="h-8 w-8 md:h-10 md:w-10">
                   <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white font-semibold text-sm">
+                  <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white font-semibold text-xs md:text-sm">
                     {getInitials(user.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div className="text-left hidden sm:block">
-                  <p className="font-medium text-xl">{user.name}</p>
-                  <p className="text-sm text-muted-foreground">{user.role}</p>
+                  <p className="font-medium text-sm md:text-base leading-none">{user.name}</p>
+                  <p className="text-xs md:text-sm text-muted-foreground mt-0.5">{user.role}</p>
                 </div>
               </Button>
             </DropdownMenuTrigger>

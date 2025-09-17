@@ -17,19 +17,22 @@ export function CotisationsChart({ data, loading, className }: CotisationsChartP
     return new Intl.NumberFormat('fr-FR').format(value) + ' F'
   }
 
+  const total = data.reduce((sum, item) => sum + item.value, 0)
+  const average = data.length > 0 ? total / data.length : 0
+
   if (loading) {
     return (
-      <Card className={className}>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-lg font-semibold">
+      <Card className={`flex flex-col ${className}`}>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 px-4 md:px-6">
+          <CardTitle className="text-base md:text-lg font-semibold">
             Évolution des cotisations
           </CardTitle>
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </CardHeader>
-        <CardContent>
-          <div className="h-80 animate-pulse bg-gray-100 rounded-lg flex items-center justify-center">
+        <CardContent className="flex-1 px-4 md:px-6 pb-4 md:pb-6">
+          <div className="h-64 md:h-72 animate-pulse bg-gray-100 rounded-lg flex items-center justify-center">
             <div className="text-sm text-muted-foreground">Chargement du graphique...</div>
           </div>
         </CardContent>
@@ -38,33 +41,34 @@ export function CotisationsChart({ data, loading, className }: CotisationsChartP
   }
 
   return (
-    <Card className={className}>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-lg font-semibold">
+    <Card className={`flex flex-col ${className}`}>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 px-4 md:px-6">
+        <CardTitle className="text-base md:text-lg font-semibold">
           Évolution des cotisations
         </CardTitle>
-        <Button variant="ghost" size="sm">
+        <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </CardHeader>
-      <CardContent>
-        <div className="h-80">
+      <CardContent className="flex-1 px-4 md:px-6 pb-4 md:pb-6">
+        <div className="h-64 md:h-72">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <LineChart data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis 
                 dataKey="month" 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 12, fill: '#64748b' }}
+                tick={{ fontSize: 11, fill: '#64748b' }}
                 className="text-xs"
               />
               <YAxis 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 12, fill: '#64748b' }}
+                tick={{ fontSize: 11, fill: '#64748b' }}
                 tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`}
                 className="text-xs"
+                width={45}
               />
               <Tooltip 
                 formatter={(value: number) => [formatCurrency(value), 'Montant']}
@@ -74,22 +78,21 @@ export function CotisationsChart({ data, loading, className }: CotisationsChartP
                   border: '1px solid #e2e8f0',
                   borderRadius: '8px',
                   boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-                  fontSize: '14px'
+                  fontSize: '12px'
                 }}
               />
               <Line 
                 type="monotone" 
                 dataKey="value" 
                 stroke="#f59e0b"
-                strokeWidth={3}
+                strokeWidth={2.5}
                 dot={{ 
                   fill: '#f59e0b', 
                   strokeWidth: 2, 
-                  r: 4,
-                  className: "hover:r-6 transition-all duration-200"
+                  r: 3
                 }}
                 activeDot={{ 
-                  r: 6, 
+                  r: 5, 
                   fill: '#f59e0b',
                   stroke: '#fff',
                   strokeWidth: 2
@@ -100,19 +103,21 @@ export function CotisationsChart({ data, loading, className }: CotisationsChartP
           </ResponsiveContainer>
         </div>
         
-        {/* Résumé des données */}
-        <div className="mt-4 pt-4 border-t flex justify-between text-sm">
-          <div>
-            <span className="text-muted-foreground">Total période: </span>
-            <span className="font-medium">
-              {formatCurrency(data.reduce((sum, item) => sum + item.value, 0))}
-            </span>
-          </div>
-          <div>
-            <span className="text-muted-foreground">Moyenne: </span>
-            <span className="font-medium">
-              {formatCurrency(data.reduce((sum, item) => sum + item.value, 0) / data.length)}
-            </span>
+        {/* Résumé des données - hauteur fixe pour alignement */}
+        <div className="mt-4 pt-4 border-t min-h-[60px] flex flex-col justify-center">
+          <div className="flex flex-col sm:flex-row justify-between gap-2 text-xs md:text-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+              <span className="text-muted-foreground whitespace-nowrap">Total période:</span>
+              <span className="font-medium">
+                {formatCurrency(total)}
+              </span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+              <span className="text-muted-foreground whitespace-nowrap">Moyenne:</span>
+              <span className="font-medium">
+                {formatCurrency(average)}
+              </span>
+            </div>
           </div>
         </div>
       </CardContent>

@@ -99,10 +99,7 @@ export function ListeMembresRisque({
             <CardTitle className="text-lg font-semibold">
               Membres à risque
             </CardTitle>
-            <Button variant="outline" size="sm" className="gap-2">
-              <Download className="h-4 w-4" />
-              Exporter
-            </Button>
+         
           </div>
         </CardHeader>
         

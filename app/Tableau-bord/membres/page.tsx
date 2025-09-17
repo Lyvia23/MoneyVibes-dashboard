@@ -81,6 +81,60 @@ const mockMembers: Member[] = [
     status: "active",
     avatar: undefined,
     contributions: { current: 12, total: 12 }
+  },
+  {
+    id: "9",
+    name: "Ibrahim Keita",
+    phone: "+225 08 369 741",
+    joinDate: "2023-08-30",
+    status: "active",
+    avatar: undefined,
+    contributions: { current: 12, total: 12 }
+  },
+    {
+    id: "10",
+    name: "Ibrahim Keita",
+    phone: "+225 08 369 741",
+    joinDate: "2023-08-30",
+    status: "active",
+    avatar: undefined,
+    contributions: { current: 12, total: 12 }
+  },
+    {
+    id: "11",
+    name: "Ibrahim Keita",
+    phone: "+225 08 369 741",
+    joinDate: "2023-08-30",
+    status: "active",
+    avatar: undefined,
+    contributions: { current: 12, total: 12 }
+  },
+    {
+    id: "12",
+    name: "Ibrahim Keita",
+    phone: "+225 08 369 741",
+    joinDate: "2023-08-30",
+    status: "active",
+    avatar: undefined,
+    contributions: { current: 12, total: 12 }
+  },
+    {
+    id: "13",
+    name: "Ibrahim Keita",
+    phone: "+225 08 369 741",
+    joinDate: "2023-08-30",
+    status: "active",
+    avatar: undefined,
+    contributions: { current: 12, total: 12 }
+  },
+    {
+    id: "14",
+    name: "Ibrahim Keita",
+    phone: "+225 08 369 741",
+    joinDate: "2023-08-30",
+    status: "active",
+    avatar: undefined,
+    contributions: { current: 12, total: 12 }
   }
 ]
 
@@ -186,7 +240,7 @@ export default function MembersPage() {
         {/* Grille des membres */}
         <MembersGrid
           members={filteredAndSortedMembers}
-          itemsPerPage={8}
+          itemsPerPage={5}
           onView={handleView}
           onEdit={handleEdit}
           onSuspend={handleSuspend}

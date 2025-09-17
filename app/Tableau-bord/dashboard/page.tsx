@@ -19,7 +19,7 @@ export default function DashboardPage() {
         id: "1",
         title: "Membres actifs",
         value: 247,
-        subtitle: "↗ +12 ce mois",
+        subtitle: "+12 ce mois",
         icon: "users",
         trend: "up",
         iconColor: "text-blue-600",
@@ -29,7 +29,7 @@ export default function DashboardPage() {
         id: "2",
         title: "Total cotisé",
         value: "2,450,000 F",
-        subtitle: "↗ +8.5% ce mois",
+        subtitle: "+8.5% ce mois",
         icon: "dollar",
         trend: "up",
         iconColor: "text-green-600",
@@ -39,7 +39,7 @@ export default function DashboardPage() {
         id: "3",
         title: "Solde de caisse",
         value: "890,500 F",
-        subtitle: "— Stable",
+        subtitle: "Stable",
         icon: "wallet",
         trend: "neutral",
         iconColor: "text-orange-600",
@@ -49,7 +49,7 @@ export default function DashboardPage() {
         id: "4",
         title: "Prêts en cours",
         value: 43,
-        subtitle: "⚠ 5 en retard",
+        subtitle: "5 en retard",
         icon: "credit",
         trend: "down",
         iconColor: "text-yellow-600",
@@ -174,7 +174,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Pagination */}
-        {dashboardData && (
+        {/* {dashboardData && (
           <div className="flex items-center justify-center gap-4 py-6">
             <button
               className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 disabled:opacity-50"
@@ -194,7 +194,7 @@ export default function DashboardPage() {
               Suivant
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </PageWithHeader>
   )

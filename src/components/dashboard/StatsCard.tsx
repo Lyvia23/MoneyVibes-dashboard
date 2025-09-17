@@ -1,13 +1,13 @@
 "use client"
 
 import { Card, CardContent } from "../ui/card"
-import { 
-  Users, 
-  DollarSign, 
-  Wallet, 
+import {
+  Users,
+  DollarSign,
+  Wallet,
   CreditCard,
-  TrendingUp,
-  TrendingDown,
+  MoveUp,
+  TriangleAlert,
   Minus
 } from 'lucide-react'
 import { StatsCardData } from "@/src/types/dashboard"
@@ -27,13 +27,13 @@ interface StatsCardProps {
 
 export function StatsCard({ data, className }: StatsCardProps) {
   const Icon = iconMap[data.icon as keyof typeof iconMap] || Users
-  
+
   const getTrendIcon = () => {
     switch (data.trend) {
       case 'up':
-        return <TrendingUp className="h-3 w-3 text-emerald-600" />
+        return <MoveUp className="h-3 w-3 text-emerald-600" />
       case 'down':
-        return <TrendingDown className="h-3 w-3 text-red-600" />
+        return <TriangleAlert className="h-3 w-3 text-red-600" />
       default:
         return <Minus className="h-3 w-3 text-gray-500" />
     }
@@ -52,36 +52,39 @@ export function StatsCard({ data, className }: StatsCardProps) {
 
   return (
     <Card className={cn("hover:shadow-md transition-shadow duration-200", className)}>
-      <CardContent className="p-6">
-        <div className="flex items-center justify-between">
-          <div className={cn(
-            "p-3 rounded-lg",
-            data.iconBg || "bg-blue-50"
-          )}>
-            <Icon className={cn(
-              "h-6 w-6",
-              data.iconColor || "text-blue-600"
-            )} />
-          </div>
-          <div className="text-right">
-            <p className="text-sm font-medium text-muted-foreground mb-1">
+      <CardContent className="pt-1 pb-1 px-6 flex items-center flex-row justify-between">
+        <div className="flex flex-col items-start">
+          <div className="text-start">
+            <p className="text-xl font-medium text-muted-foreground mb-1">
               {data.title}
             </p>
-            <h3 className="text-2xl font-bold tracking-tight">
-              {typeof data.value === 'number' 
+            <div className="text-2xl font-bold tracking-tight">
+              {typeof data.value === 'number'
                 ? data.value.toLocaleString('fr-FR')
                 : data.value
               }
-            </h3>
+            </div>
           </div>
+            <div className="mt-4 flex items-center gap-2">
+              {getTrendIcon()}
+              <span className={cn("text-sm font-medium", getTrendColor())}>
+                {data.subtitle}
+            </span>
+          </div>
+
         </div>
-        
-        <div className="mt-4 flex items-center gap-2">
-          {getTrendIcon()}
-          <span className={cn("text-sm font-medium", getTrendColor())}>
-            {data.subtitle}
-          </span>
-        </div>
+           <div className={cn(
+            "rounded-lg",
+            data.iconBg || "bg-blue-50"
+          )}>
+            <Icon className={cn(
+              "h-8 w-8",
+              data.iconColor || "text-blue-600"
+            )} />
+          </div>
+         
+
+
       </CardContent>
     </Card>
   )
