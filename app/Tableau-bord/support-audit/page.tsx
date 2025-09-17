@@ -42,12 +42,12 @@ const donneesStats = [
 
 export default function SupportAuditPage() {
   return (
-     <PageWithHeader
-                title="Support & Audit"
-                description="Gestion des réclamations, assistance et vérifications système"
-            >
-                <div className="space-y-6 p-6">
-      
+    <PageWithHeader
+      title="Support & Audit"
+      description="Gestion des réclamations, assistance et vérifications système"
+    >
+      <div className="space-y-6 p-6">
+
         {/* Stats cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {donneesStats.map((stat, index) => (
@@ -55,13 +55,8 @@ export default function SupportAuditPage() {
           ))}
         </div>
 
-        {/* Onglets et contenu */}
-        <div className="space-y-6">
-          
-      
           <SupportDashboard />
           <JournalAudit />
-        </div>
       </div>
     </PageWithHeader>);
 }

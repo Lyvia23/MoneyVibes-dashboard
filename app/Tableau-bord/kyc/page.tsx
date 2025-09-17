@@ -184,8 +184,8 @@ export default function KYCListePage() {
       title="Gestion KYC"
       description="Liste des demandes de validation KYC"
     >
-      <div className="space-y-6 p-3 sm:p-6">
-        <div className="container mx-auto max-w-7xl">
+      <div className="space-y-6 p-6">
+        <div className="container w-full">
           {/* Filtres et recherche */}
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <div className="relative flex-1">
@@ -214,10 +214,7 @@ export default function KYCListePage() {
             </div>
           </div>
 
-          {/* Compteur de résultats */}
-          <div className="mb-4 text-sm text-gray-600">
-            Affichage de {startIndex + 1} à {Math.min(endIndex, filteredUsers.length)} sur {filteredUsers.length} résultats
-          </div>
+     
 
           {/* Liste des utilisateurs */}
           <div className="grid gap-4 mb-6">
@@ -285,12 +282,15 @@ export default function KYCListePage() {
               </Card>
             )}
           </div>
-
+    
           {/* Pagination */}
           {totalPages > 1 && (
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="text-sm text-gray-600 order-2 sm:order-1">
-                Page {currentPage} sur {totalPages}
+                   {/* Compteur de résultats */}
+          <div className="mb-4 text-sm text-gray-600">
+            Affichage de {startIndex + 1} à {Math.min(endIndex, filteredUsers.length)} sur {filteredUsers.length} résultats
+          </div>
               </div>
               
               <div className="flex items-center space-x-2 order-1 sm:order-2">

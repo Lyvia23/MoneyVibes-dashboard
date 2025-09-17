@@ -176,7 +176,7 @@ function Pagination({ currentPage, totalPages, onPageChange, totalItems, itemsPe
               variant={currentPage === page ? "default" : "outline"}
               size="sm"
               onClick={() => onPageChange(page)}
-              className={currentPage === page ? "bg-orange-500 hover:bg-orange-600" : ""}
+              className={currentPage === page ? "bg-black hover:bg-black/10" : ""}
             >
               {page}
             </Button>
@@ -231,8 +231,7 @@ export default function SupportDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
-      <div className="max-w-full mx-auto">
+      <div className="w-full">
         <Tabs defaultValue="tickets" className="w-full">
           <TabsList className="grid w-full grid-cols-3 mb-6">
             <TabsTrigger value="tickets" className="text-orange-600">
@@ -304,6 +303,5 @@ export default function SupportDashboard() {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
   )
 }

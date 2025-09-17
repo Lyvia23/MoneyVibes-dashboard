@@ -56,8 +56,8 @@ export function PageHeader({
   }
 
   return (
-    <div className={cn("border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm", className)}>
-      <div className="flex h-16 items-center justify-between px-4 md:px-6">
+    <div className={cn("border-b  bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm ", className)}>
+      <div className="flex h-16 items-center justify-between px-6 md:px-8">
         {/* Titre et description */}
         <div className="space-y-0.5">
           <h1 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">

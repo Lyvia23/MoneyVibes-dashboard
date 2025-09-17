@@ -362,7 +362,7 @@ export default function JournalAudit() {
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-4">
+    <div className="w-full ">
       <Card>
         <CardHeader>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
