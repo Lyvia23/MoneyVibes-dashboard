@@ -1,4 +1,3 @@
-// components/CarteMembre.tsx
 import { Card, CardContent } from "../ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Badge } from "../ui/badge"

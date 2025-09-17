@@ -1,4 +1,3 @@
-// components/FiltresRisque.tsx
 import { Input } from "../ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 import { Button } from "../ui/button"
