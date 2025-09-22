@@ -87,7 +87,7 @@ export function MembersFilters({
             placeholder="Rechercher un membre..."
             value={filters.search}
             onChange={(e) => updateFilter("search", e.target.value)}
-            className="pl-10 pr-4 h-10 w-full"
+            className="pl-10 pr-4 h-10 w-full border border-gray-200"
           />
         </div>
 

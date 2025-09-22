@@ -2,7 +2,7 @@
 
 import { GrandLivreComptable } from "@/src/components/comptabilité/GrandLivreComptable"
 import { GraphiqueFluxFinancier } from "@/src/components/comptabilité/GraphiqueFluxFinancier"
-import { SectionStats } from "@/src/components/comptabilité/SectionStats"
+import { StatsCard } from "@/src/components/StatsCard"
 import { useSetPageInfo } from "@/src/Context/pageContext"
 import { DonneeFlux, StatistiqueComptable, TransactionComptable } from "@/src/types/comptabilite"
 import { TrendingUp, TrendingDown, DollarSign, Receipt } from "lucide-react"
@@ -15,21 +15,21 @@ export default function PageComptabilite() {
   const statistiques: StatistiqueComptable[] = [
     {
       label: "Total Recettes",
-      value: "2,450,000 FCFA",
+      value: "2,450,000 XOF",
       icon: TrendingUp,
       iconColor: "text-green-600",
       iconBgColor: "bg-green-100"
     },
     {
       label: "Total Dépenses",
-      value: "1,850,000 FCFA",
+      value: "1,850,000 XOF",
       icon: TrendingDown,
       iconColor: "text-red-600",
       iconBgColor: "bg-red-100"
     },
     {
       label: "Solde Net",
-      value: "600,000 FCFA",
+      value: "600,000 XOF",
       icon: DollarSign,
       iconColor: "text-blue-600",
       iconBgColor: "bg-blue-100"
@@ -120,10 +120,12 @@ export default function PageComptabilite() {
   return (
 
     <div className="space-y-6 p-6 overflow-x-hidden ">
-      {/* Section des statistiques */}
-      <SectionStats statistiques={statistiques} />
 
-
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {statistiques.map((stat, index) => (
+          <StatsCard key={index} {...stat} />
+        ))}
+      </div>
       {/* Section du graphique */}
       <GraphiqueFluxFinancier donnees={donneesFlux} />
 

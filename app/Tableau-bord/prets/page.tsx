@@ -3,9 +3,10 @@
 import { PendingRequests } from "@/src/components/prets/PendingRequests"
 import { PretsHistorique } from "@/src/components/prets/PretsHistorique"
 import { RepaymentRate } from "@/src/components/prets/RepaymentRate"
-import { StatsGrid } from "@/src/components/prets/StatsGrid"
 import { UpcomingRepayments } from "@/src/components/prets/UpcomingRepayments"
+import { StatsCard } from "@/src/components/StatsCard"
 import { useSetPageInfo } from "@/src/Context/pageContext"
+import { AlertTriangle, Clock, CreditCard, DollarSign } from "lucide-react"
 import { useState } from "react"
 
 // Types pour les données
@@ -50,7 +51,7 @@ export default function LoanManagementPage() {
     // États pour les données
     const [statsData] = useState<StatsData>({
         activeLoans: 12,
-        totalAmount: "1,850,000 FCFA",
+        totalAmount: "1,850,000 XOF",
         pending: 5,
         overdue: 3
     })
@@ -60,7 +61,7 @@ export default function LoanManagementPage() {
             id: "1",
             name: "Jean Baptiste",
             memberSince: "Membre depuis 2 ans",
-            amount: "150,000 FCFA",
+            amount: "150,000 XOF",
             duration: "12 mois",
             purpose: "Commerce"
         },
@@ -68,7 +69,7 @@ export default function LoanManagementPage() {
             id: "2",
             name: "Fatou Diallo",
             memberSince: "Membre depuis 1 an",
-            amount: "80,000 FCFA",
+            amount: "80,000 XOF",
             duration: "6 mois",
             purpose: "Education"
         },
@@ -76,7 +77,7 @@ export default function LoanManagementPage() {
             id: "3",
             name: "Amadou Traoré",
             memberSince: "Membre depuis 3 ans",
-            amount: "200,000 FCFA",
+            amount: "200,000 XOF",
             duration: "18 mois",
             purpose: "Agriculture"
         }
@@ -86,21 +87,21 @@ export default function LoanManagementPage() {
         {
             id: "1",
             memberName: "Marie Kouadio",
-            amount: "25,000 FCFA",
+            amount: "25,000 XOF",
             dueDate: "25 Jan 2024",
             status: "upcoming"
         },
         {
             id: "2",
             memberName: "Jean Baptiste",
-            amount: "15,000 FCFA",
+            amount: "15,000 XOF",
             dueDate: "20 Jan",
             status: "overdue"
         },
         {
             id: "3",
             memberName: "Aicha Sanogo",
-            amount: "30,000 FCFA",
+            amount: "30,000 XOF",
             dueDate: "30 Jan 2024",
             status: "today"
         }
@@ -111,7 +112,7 @@ export default function LoanManagementPage() {
             id: "1",
             memberName: "Marie Kouadio",
             category: "Commerce",
-            amount: "120,000 FCFA",
+            amount: "120,000 XOF",
             duration: "12 mois",
             progress: 75,
             progressLabel: "75% remboursé",
@@ -121,7 +122,7 @@ export default function LoanManagementPage() {
             id: "2",
             memberName: "Jean Baptiste",
             category: "Agriculture",
-            amount: "150,000 FCFA",
+            amount: "150,000 XOF",
             duration: "12 mois",
             progress: 40,
             progressLabel: "40% remboursé",
@@ -131,7 +132,7 @@ export default function LoanManagementPage() {
             id: "3",
             memberName: "Fatou Diallo",
             category: "Education",
-            amount: "80,000 FCFA",
+            amount: "80,000 XOF",
             duration: "6 mois",
             progress: 100,
             progressLabel: "Remboursé",
@@ -141,7 +142,7 @@ export default function LoanManagementPage() {
             id: "4",
             memberName: "Amadou Traoré",
             category: "Commerce",
-            amount: "200,000 FCFA",
+            amount: "200,000 XOF",
             duration: "18 mois",
             progress: 20,
             progressLabel: "20% remboursé",
@@ -195,11 +196,45 @@ export default function LoanManagementPage() {
     notificationCount: 3
   })
 
+  const statistiques = [
+    {
+      label: "Prêts actifs",
+      value:12,
+      icon: CreditCard,
+      iconColor: "text-blue-600",
+      iconBgColor: "bg-blue-100"
+    },
+    {
+      label: "Montant total",
+      value: "1,850,000 XOF",
+      icon: DollarSign,
+      iconColor: "text-green-600",
+      iconBgColor: "bg-green-100"
+    },
+    {
+      label: "En attente",
+      value: 3,
+      icon: Clock,
+      iconColor: "text-orange-600",
+      iconBgColor: "bg-orange-100"
+    },
+    {
+      label: "En retard",
+      value: 1,
+      icon: AlertTriangle,
+      iconColor: "text-red-600",
+      iconBgColor: "bg-red-100"
+    }
+  ]
+
     return (
 
             <div className="space-y-6 p-6">
-                {/* Section des statistiques */}
-                <StatsGrid data={statsData} />
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {statistiques.map((stat, index) => (
+                          <StatsCard key={index} {...stat} />
+                        ))}
+                      </div>
 
                 {/* Section principale restructurée */}
                 <div className="space-y-6">

@@ -57,6 +57,58 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* === STYLES PAR DÉFAUT POUR LES INPUTS === */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="time"],
+  textarea,
+  select {
+    @apply flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors;
+    @apply file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground;
+    @apply placeholder:text-muted-foreground;
+    @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Spécifique pour textarea */
+  textarea {
+    @apply min-h-[60px] resize-y;
+  }
+
+  /* Spécifique pour select */
+  select {
+    @apply cursor-pointer bg-background;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+    background-position: right 8px center;
+    background-repeat: no-repeat;
+    background-size: 16px 12px;
+    padding-right: 40px;
+  }
+
+  /* Mode sombre pour select */
+  .dark select {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%29a3a3a3' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+  }
+
+  /* Styles pour les checkboxes et radio buttons */
+  input[type="checkbox"],
+  input[type="radio"] {
+    @apply h-4 w-4 rounded border border-primary text-primary;
+    @apply focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  input[type="radio"] {
+    @apply rounded-full;
+  }
 }
 
 :root {

@@ -60,7 +60,7 @@ export function PageHeader({
 
   return (
     <div className={cn("border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm", className)}>
-      <div className="flex h-16 items-center px-6 md:px-8">
+      <div className="flex h-24 md:h-32 items-center px-6 md:px-8">
         {/* Action gauche (bouton toggle sidebar) */}
         {leftAction && (
           <div className="flex items-center">
@@ -69,7 +69,7 @@ export function PageHeader({
         )}
 
         {/* Titre et description */}
-        <div className="flex-1 space-y-0.5">
+        <div className="flex-1 space-y-0,5">
           <h1 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
             {title}
           </h1>

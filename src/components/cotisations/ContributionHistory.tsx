@@ -105,7 +105,7 @@ export function ContributionHistory({
   // Export Excel
   const exportToExcel = () => {
     const csvContent = [
-      ['Membre', 'Téléphone', 'Montant (FCFA)', 'Date Prévue', 'Date Payée', 'Statut'].join(','),
+      ['Membre', 'Téléphone', 'Montant (XOF)', 'Date Prévue', 'Date Payée', 'Statut'].join(','),
       ...filteredContributions.map(contrib => [
         contrib.member.name,
         contrib.member.phone,
@@ -151,7 +151,7 @@ export function ContributionHistory({
               <tr>
                 <th>Membre</th>
                 <th>Téléphone</th>
-                <th>Montant (FCFA)</th>
+                <th>Montant (XOF)</th>
                 <th>Date Prévue</th>
                 <th>Date Payée</th>
                 <th>Statut</th>
@@ -245,7 +245,7 @@ export function ContributionHistory({
               <span>Montant</span>
             </div>
             <span className="font-semibold text-gray-900">
-              {formatCurrency(contribution.amount)} FCFA
+              {formatCurrency(contribution.amount)} XOF
             </span>
           </div>
 
@@ -405,7 +405,7 @@ export function ContributionHistory({
                       </div>
                     </td>
                     <td className="py-4 px-4 font-semibold text-gray-900">
-                      {formatCurrency(contribution.amount)} FCFA
+                      {formatCurrency(contribution.amount)} XOF
                     </td>
                     <td className="py-4 px-4 text-gray-600">
                       {formatDate(contribution.scheduledDate)}

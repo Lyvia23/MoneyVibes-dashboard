@@ -3,11 +3,12 @@
 import { useState, useMemo } from "react"
 import { useRouter } from "next/navigation" // Use App Router navigation
 import { Member } from "@/src/components/membres/MemberCard"
-import { MembersStatsCards } from "@/src/components/membres/MembersStatsCards"
 import { MembersFilters, FilterValues } from "@/src/components/membres/MembersFilters"
 import { MembersTable } from "@/src/components/membres/MembersTable"
 import { MembersGrid } from "@/src/components/membres/MembersGrid"
 import { useSetPageInfo } from "@/src/Context/pageContext"
+import { Users, UserCheck, UserX, UserPlus } from "lucide-react"
+import { StatsCard } from "@/src/components/StatsCard"
 
 // Type pour les vues disponibles
 type ViewMode = 'table' | 'grid'
@@ -193,8 +194,8 @@ const ViewToggleButtons = ({
       <button
         onClick={() => onViewChange('table')}
         className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${currentView === 'table'
-            ? 'bg-white text-blue-600 shadow-sm'
-            : 'text-gray-500 hover:text-gray-700'
+          ? 'bg-white text-blue-600 shadow-sm'
+          : 'text-gray-500 hover:text-gray-700'
           }`}
       >
         <svg
@@ -216,8 +217,8 @@ const ViewToggleButtons = ({
       <button
         onClick={() => onViewChange('grid')}
         className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${currentView === 'grid'
-            ? 'bg-white text-blue-600 shadow-sm'
-            : 'text-gray-500 hover:text-gray-700'
+          ? 'bg-white text-blue-600 shadow-sm'
+          : 'text-gray-500 hover:text-gray-700'
           }`}
       >
         <svg
@@ -254,6 +255,7 @@ export default function MembersPage() {
     walletMax: ""
   })
 
+
   // Calcul des statistiques
   const stats = useMemo(() => {
     const total = mockMembers.length
@@ -267,6 +269,39 @@ export default function MembersPage() {
 
     return { total, active, inactive, newThisMonth }
   }, [])
+
+
+
+  const statistiques = [
+    {
+      label: "Total membres",
+      value: stats.total,
+      icon: Users,
+      color: "text-blue-600",
+      bgColor: "bg-blue-50"
+    },
+    {
+      label: "Actifs",
+      value: stats.active,
+      icon: UserCheck,
+      color: "text-green-600",
+      bgColor: "bg-green-50"
+    },
+    {
+      label: "Inactifs",
+      value: stats.inactive,
+      icon: UserX,
+      color: "text-red-600",
+      bgColor: "bg-red-50"
+    },
+    {
+      label: "Nouveaux ce mois",
+      value: stats.newThisMonth,
+      icon: UserPlus,
+      color: "text-orange-600",
+      bgColor: "bg-orange-50"
+    }
+  ]
 
   // Fonction de filtrage et tri des membres
   const filteredAndSortedMembers = useMemo(() => {
@@ -379,63 +414,66 @@ export default function MembersPage() {
     }
   }
   useSetPageInfo({
-    title:" Gestion des membres",
+    title: " Gestion des membres",
     description: "Gérez et suivez vos membres de tontine",
     notificationCount: 3
   })
   return (
 
-      <div className="space-y-6 p-6">
-        {/* Cartes statistiques */}
-        <MembersStatsCards stats={stats} />
+    <div className="space-y-6 p-6">
+      {/* Cartes statistiques */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {statistiques.map((stat, index) => (
+          <StatsCard key={index} {...stat} />
+        ))}
+      </div>
+      {/* Section Filtres avec bouton de basculement de vue */}
+      <div className="flex flex-col space-y-4">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between space-y-4 lg:space-y-0">
+          <div className="flex-1 lg:mr-6">
+            <MembersFilters
+              filters={filters}
+              onFiltersChange={setFilters}
+            />
+          </div>
 
-        {/* Section Filtres avec bouton de basculement de vue */}
-        <div className="flex flex-col space-y-4">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between space-y-4 lg:space-y-0">
-            <div className="flex-1 lg:mr-6">
-              <MembersFilters
-                filters={filters}
-                onFiltersChange={setFilters}
-              />
-            </div>
-
-            {/* Boutons de basculement de vue */}
-            <div className="flex justify-end">
-              <ViewToggleButtons
-                currentView={viewMode}
-                onViewChange={setViewMode}
-              />
-            </div>
+          {/* Boutons de basculement de vue */}
+          <div className="flex justify-end">
+            <ViewToggleButtons
+              currentView={viewMode}
+              onViewChange={setViewMode}
+            />
           </div>
         </div>
-
-        {/* Affichage conditionnel basé sur le mode de vue */}
-        {filteredAndSortedMembers.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="text-gray-500 text-lg mb-2">Aucun membre trouvé</div>
-            <div className="text-gray-400 text-sm">
-              Essayez de modifier vos critères de recherche ou filtres
-            </div>
-          </div>
-        ) : viewMode === 'table' ? (
-          <MembersTable
-            members={filteredAndSortedMembers}
-            itemsPerPage={10}
-            onView={handleView}
-            onEdit={handleEdit}
-            onSuspend={handleSuspend}
-            onContact={handleContact}
-          />
-        ) : (
-          <MembersGrid
-            members={filteredAndSortedMembers}
-            itemsPerPage={12}
-            onView={handleView}
-            onEdit={handleEdit}
-            onSuspend={handleSuspend}
-            onContact={handleContact}
-          />
-        )}
       </div>
+
+      {/* Affichage conditionnel basé sur le mode de vue */}
+      {filteredAndSortedMembers.length === 0 ? (
+        <div className="text-center py-12">
+          <div className="text-gray-500 text-lg mb-2">Aucun membre trouvé</div>
+          <div className="text-gray-400 text-sm">
+            Essayez de modifier vos critères de recherche ou filtres
+          </div>
+        </div>
+      ) : viewMode === 'table' ? (
+        <MembersTable
+          members={filteredAndSortedMembers}
+          itemsPerPage={10}
+          onView={handleView}
+          onEdit={handleEdit}
+          onSuspend={handleSuspend}
+          onContact={handleContact}
+        />
+      ) : (
+        <MembersGrid
+          members={filteredAndSortedMembers}
+          itemsPerPage={12}
+          onView={handleView}
+          onEdit={handleEdit}
+          onSuspend={handleSuspend}
+          onContact={handleContact}
+        />
+      )}
+    </div>
   )
 }

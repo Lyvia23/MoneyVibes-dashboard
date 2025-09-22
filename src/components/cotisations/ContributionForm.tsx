@@ -108,7 +108,7 @@ export function ContributionForm({ members, onSubmit }: ContributionFormProps) {
             {/* Montant */}
             <div className="space-y-2">
               <Label htmlFor="amount" className="text-sm font-medium text-gray-700">
-                Montant (FCFA)
+                Montant (XOF)
               </Label>
               <Input
                 id="amount"

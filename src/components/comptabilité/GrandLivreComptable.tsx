@@ -59,7 +59,7 @@ export function GrandLivreComptable({ transactions }: GrandLivreComptableProps) 
     const couleur = type === 'recette' ? 'text-green-600' : 'text-red-600'
     return (
       <span className={`font-medium ${couleur}`}>
-        {signe}{montant.toLocaleString('fr-FR')} FCFA
+        {signe}{montant.toLocaleString('fr-FR')} XOF
       </span>
     )
   }
@@ -119,7 +119,7 @@ export function GrandLivreComptable({ transactions }: GrandLivreComptableProps) 
               <span className="text-sm text-gray-600">Solde</span>
             </div>
             <span className="font-bold text-gray-900">
-              {transaction.solde.toLocaleString('fr-FR')} FCFA
+              {transaction.solde.toLocaleString('fr-FR')} XOF
             </span>
           </div>
         </div>
@@ -228,7 +228,7 @@ export function GrandLivreComptable({ transactions }: GrandLivreComptableProps) 
                       {formaterMontant(transaction.depenses, 'depense')}
                     </TableCell>
                     <TableCell className="px-6 py-4 text-right font-bold text-gray-900">
-                      {transaction.solde.toLocaleString('fr-FR')} FCFA
+                      {transaction.solde.toLocaleString('fr-FR')} XOF
                     </TableCell>
                   </TableRow>
                 ))}

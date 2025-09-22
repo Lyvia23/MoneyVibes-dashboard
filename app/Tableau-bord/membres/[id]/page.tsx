@@ -29,7 +29,6 @@ import {
   Smartphone,
   Monitor
 } from "lucide-react"
-import { PageWithHeader } from "@/src/components/PageWithHeader"
 import { useSetPageInfo } from "@/src/Context/pageContext"
 
 // Types pour les données utilisateur étendues
@@ -245,7 +244,7 @@ const mockUserDetail: UserDetail = {
       {
         date: "2024-01-19T14:20:00Z",
         action: "Dépôt",
-        details: "Dépôt de 25 000 FCFA"
+        details: "Dépôt de 25 000 XOF"
       },
       {
         date: "2024-01-18T16:45:00Z",

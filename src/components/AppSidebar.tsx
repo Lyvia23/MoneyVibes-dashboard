@@ -31,6 +31,8 @@ import {
 
 const menuItems = [
   { title: "Tableau de bord", url: "/Tableau-bord/dashboard", icon: LayoutDashboard },
+  { title: "Tontines", url: "/Tableau-bord/tontines", icon: HandCoins },
+
   { title: "Membres", url: "/Tableau-bord/membres", icon: Users },
   { title: "Cotisations", url: "/Tableau-bord/cotisations", icon: HandCoins },
   { title: "Prêts", url: "/Tableau-bord/prets", icon: CreditCard },

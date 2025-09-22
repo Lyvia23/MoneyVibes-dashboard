@@ -38,7 +38,7 @@ const TooltipPersonnalise = ({ active, payload, label }: TooltipProps) => {
         <p className="font-medium text-gray-900 mb-2">{label}</p>
         {payload.map((entry, index) => (
           <p key={index} className="text-sm" style={{ color: entry.color }}>
-            {entry.name}: {entry.value.toLocaleString('fr-FR')} FCFA
+            {entry.name}: {entry.value.toLocaleString('fr-FR')} XOF
           </p>
         ))}
       </div>
@@ -142,9 +142,9 @@ export function GraphiqueFluxFinancier({ donnees }: GraphiqueFluxFinancierProps)
     const rows: string[][] = []
 
     // Ajouter les en-têtes selon les données visibles
-    if (donneesTraitees.some(item => item.cotisations !== undefined)) headers.push('Cotisations (FCFA)')
-    if (donneesTraitees.some(item => item.pretsAccordes !== undefined)) headers.push('Prêts Accordés (FCFA)')
-    if (donneesTraitees.some(item => item.remboursements !== undefined)) headers.push('Remboursements (FCFA)')
+    if (donneesTraitees.some(item => item.cotisations !== undefined)) headers.push('Cotisations (XOF)')
+    if (donneesTraitees.some(item => item.pretsAccordes !== undefined)) headers.push('Prêts Accordés (XOF)')
+    if (donneesTraitees.some(item => item.remboursements !== undefined)) headers.push('Remboursements (XOF)')
 
     // Ajouter les données
     donneesTraitees.forEach(item => {
@@ -244,9 +244,9 @@ export function GraphiqueFluxFinancier({ donnees }: GraphiqueFluxFinancierProps)
             <thead>
               <tr>
                 <th>Mois</th>
-                ${donneesTraitees.some(item => item.cotisations !== undefined) ? '<th class="number">Cotisations (FCFA)</th>' : ''}
-                ${donneesTraitees.some(item => item.pretsAccordes !== undefined) ? '<th class="number">Prêts Accordés (FCFA)</th>' : ''}
-                ${donneesTraitees.some(item => item.remboursements !== undefined) ? '<th class="number">Remboursements (FCFA)</th>' : ''}
+                ${donneesTraitees.some(item => item.cotisations !== undefined) ? '<th class="number">Cotisations (XOF)</th>' : ''}
+                ${donneesTraitees.some(item => item.pretsAccordes !== undefined) ? '<th class="number">Prêts Accordés (XOF)</th>' : ''}
+                ${donneesTraitees.some(item => item.remboursements !== undefined) ? '<th class="number">Remboursements (XOF)</th>' : ''}
               </tr>
             </thead>
             <tbody>
@@ -271,7 +271,7 @@ export function GraphiqueFluxFinancier({ donnees }: GraphiqueFluxFinancierProps)
             <h3>Résumé</h3>
             <p>Ce rapport présente les flux financiers selon les critères sélectionnés.</p>
             <p><strong>Nombre de périodes:</strong> ${donneesTraitees.length}</p>
-            <p><strong>Total général:</strong> ${(totaux.cotisations + totaux.pretsAccordes + totaux.remboursements).toLocaleString('fr-FR')} FCFA</p>
+            <p><strong>Total général:</strong> ${(totaux.cotisations + totaux.pretsAccordes + totaux.remboursements).toLocaleString('fr-FR')} XOF</p>
           </div>
         </body>
         </html>
@@ -517,7 +517,7 @@ export function GraphiqueFluxFinancier({ donnees }: GraphiqueFluxFinancierProps)
                   <span className="text-sm font-medium text-gray-700">Cotisations</span>
                 </div>
                 <span className="text-sm font-bold text-green-600 text-right">
-                  {totaux.cotisations.toLocaleString('fr-FR')} <span className="hidden sm:inline">FCFA</span>
+                  {totaux.cotisations.toLocaleString('fr-FR')} <span className="hidden sm:inline">XOF</span>
                 </span>
               </div>
             )}
@@ -530,7 +530,7 @@ export function GraphiqueFluxFinancier({ donnees }: GraphiqueFluxFinancierProps)
                   <span className="text-sm font-medium text-gray-700">Prêts accordés</span>
                 </div>
                 <span className="text-sm font-bold text-orange-600 text-right">
-                  {totaux.pretsAccordes.toLocaleString('fr-FR')} <span className="hidden sm:inline">FCFA</span>
+                  {totaux.pretsAccordes.toLocaleString('fr-FR')} <span className="hidden sm:inline">XOF</span>
                 </span>
               </div>
             )}
@@ -543,7 +543,7 @@ export function GraphiqueFluxFinancier({ donnees }: GraphiqueFluxFinancierProps)
                   <span className="text-sm font-medium text-gray-700">Remboursements</span>
                 </div>
                 <span className="text-sm font-bold text-gray-600 text-right">
-                  {totaux.remboursements.toLocaleString('fr-FR')} <span className="hidden sm:inline">FCFA</span>
+                  {totaux.remboursements.toLocaleString('fr-FR')} <span className="hidden sm:inline">XOF</span>
                 </span>
               </div>
             )}

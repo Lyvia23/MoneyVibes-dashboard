@@ -3,9 +3,10 @@
 
 import { ContributionForm } from '@/src/components/cotisations/ContributionForm';
 import { ContributionHistory } from '@/src/components/cotisations/ContributionHistory';
-import { StatsCards } from '@/src/components/cotisations/StatsCards';
+import { StatsCard } from '@/src/components/StatsCard';
 import { useSetPageInfo } from '@/src/Context/pageContext';
 import React from 'react';
+import { Banknote, Calendar, Clock, AlertTriangle } from 'lucide-react';
 
 // Types pour les données
 export interface Member {
@@ -24,20 +25,6 @@ export interface Contribution {
   status: 'payé' | 'en_attente' | 'en_retard';
 }
 
-export interface Stats {
-  totalCollected: number;
-  thisMonth: number;
-  pending: number;
-  lateMembers: number;
-}
-
-// Données simulées - à remplacer par des appels API
-const mockStats: Stats = {
-  totalCollected: 2450000,
-  thisMonth: 185000,
-  pending: 25000,
-  lateMembers: 15
-};
 
 const mockMembers: Member[] = [
   { id: '1', name: 'Marie Kouadio', phone: '+225 07 123 456' },
@@ -87,10 +74,42 @@ const mockContributions: Contribution[] = [
     status: 'payé'
   }
 ];
-
+const cards = [
+  {
+    label: 'Total collecté',
+    value: `2450000 XOF`,
+    icon: Banknote,
+    color: 'text-green-600',
+    bgColor: 'bg-green-50',
+    iconBg: 'bg-green-100'
+  },
+  {
+    label: 'Ce mois',
+    value: `185000 XOF`,
+    icon: Calendar,
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-50',
+    iconBg: 'bg-blue-100'
+  },
+  {
+    label: 'En attente',
+    value: `25000 XOF`,
+    icon: Clock,
+    color: 'text-orange-600',
+    bgColor: 'bg-orange-50',
+    iconBg: 'bg-orange-100'
+  },
+  {
+    label: 'En retard',
+    value: `15 membres`,
+    icon: AlertTriangle,
+    color: 'text-red-600',
+    bgColor: 'bg-red-50',
+    iconBg: 'bg-red-100'
+  }
+];
 export default function CotisationsPage() {
   const [contributions, setContributions] = React.useState<Contribution[]>(mockContributions);
-  const [stats, setStats] = React.useState<Stats>(mockStats);
 
   // Handlers pour les actions CRUD - à connecter avec l'API
   const handleAddContribution = async (newContribution: Omit<Contribution, 'id'>) => {
@@ -103,7 +122,6 @@ export default function CotisationsPage() {
       setContributions(prev => [contribution, ...prev]);
 
       // Mettre à jour les stats
-      updateStats();
     } catch (error) {
       console.error('Erreur lors de l\'ajout de la cotisation:', error);
     }
@@ -115,7 +133,6 @@ export default function CotisationsPage() {
       setContributions(prev =>
         prev.map(contrib => contrib.id === id ? { ...contrib, ...updates } : contrib)
       );
-      updateStats();
     } catch (error) {
       console.error('Erreur lors de la mise à jour:', error);
     }
@@ -125,29 +142,11 @@ export default function CotisationsPage() {
     try {
       // TODO: Remplacer par un appel API
       setContributions(prev => prev.filter(contrib => contrib.id !== id));
-      updateStats();
     } catch (error) {
       console.error('Erreur lors de la suppression:', error);
     }
   };
 
-  const updateStats = () => {
-    // Recalculer les statistiques
-    const total = contributions.reduce((sum, contrib) =>
-      contrib.status === 'payé' ? sum + contrib.amount : sum, 0
-    );
-    const pending = contributions.reduce((sum, contrib) =>
-      contrib.status === 'en_attente' ? sum + contrib.amount : sum, 0
-    );
-    const lateCount = contributions.filter(contrib => contrib.status === 'en_retard').length;
-
-    setStats(prev => ({
-      ...prev,
-      totalCollected: total,
-      pending,
-      lateMembers: lateCount
-    }));
-  };
   useSetPageInfo({
     title: "Gestion des cotisations",
     description: "Enregistrez et suivez les cotisations des membres",
@@ -155,25 +154,29 @@ export default function CotisationsPage() {
   })
 
   return (
-  
-      <div className="space-y-6 p-6">
+
+    <div className="space-y-6 p-6">
 
 
-        {/* Cartes statistiques */}
-        <StatsCards stats={stats} />
-
-        {/* Formulaire d'enregistrement */}
-        <ContributionForm
-          members={mockMembers}
-          onSubmit={handleAddContribution}
-        />
-
-        {/* Historique des cotisations */}
-        <ContributionHistory
-          contributions={contributions}
-          onUpdate={handleUpdateContribution}
-          onDelete={handleDeleteContribution}
-        />
+      {/* Cartes statistiques */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {cards.map((stat, index) => (
+          <StatsCard key={index} {...stat} />
+        ))}
       </div>
+
+      {/* Formulaire d'enregistrement */}
+      <ContributionForm
+        members={mockMembers}
+        onSubmit={handleAddContribution}
+      />
+
+      {/* Historique des cotisations */}
+      <ContributionHistory
+        contributions={contributions}
+        onUpdate={handleUpdateContribution}
+        onDelete={handleDeleteContribution}
+      />
+    </div>
   );
 }

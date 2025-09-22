@@ -63,12 +63,12 @@ function DashboardContent({ children }: { children: React.ReactNode }) {
               <SidebarTrigger 
                 className="
                   flex items-center justify-center
-                  w-9 h-9 rounded-lg
+                  w-10 h-10 rounded-lg
                   border border-gray-200
                   hover:bg-gray-50 hover:border-gray-300
                   transition-all duration-200
                   focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2
-                  active:scale-95 mr-4
+                  active:scale-95 mr-6
                 "
               >
                 <Menu className="h-4 w-4" />

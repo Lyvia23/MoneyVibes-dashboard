@@ -1,6 +1,7 @@
 "use client"
 
 import { Plus, UserCheck, Send, FileText } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface ActionRapideProps {
   title: string
@@ -15,6 +16,7 @@ interface ActionsRapidesProps {
 }
 
 const ActionRapide = ({ title, description, icon, onClick, className = "" }: ActionRapideProps) => {
+
   return (
     <button
       onClick={onClick}
@@ -45,7 +47,10 @@ const ActionRapide = ({ title, description, icon, onClick, className = "" }: Act
   )
 }
 
+
 export const ActionsRapides = ({ className = "" }: ActionsRapidesProps) => {
+const router = useRouter();
+
   const actions = [
     {
       title: "Créer nouvelle tontine",
@@ -53,7 +58,8 @@ export const ActionsRapides = ({ className = "" }: ActionsRapidesProps) => {
       icon: <Plus className="h-5 w-5" />,
       onClick: () => {
         console.log("Créer nouvelle tontine")
-        // Navigation vers la page de création
+        router.push('/Tableau-bord/tontines/creation');
+
       }
     },
     {
@@ -62,7 +68,8 @@ export const ActionsRapides = ({ className = "" }: ActionsRapidesProps) => {
       icon: <UserCheck className="h-5 w-5" />,
       onClick: () => {
         console.log("Valider KYC")
-        // Navigation vers la liste KYC
+                router.push('/Tableau-bord/kyc');
+
       }
     },
     {
