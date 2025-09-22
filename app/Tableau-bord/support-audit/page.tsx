@@ -37,12 +37,13 @@ const donneesStats = [
     iconBgColor: "bg-blue-100"
   }
 ]
-  useSetPageInfo({
+
+export default function SupportAuditPage() {
+    useSetPageInfo({
     title: "Support & Audit",
     description: "Gestion des réclamations, assistance et vérifications système",
     notificationCount: 3
   })
-export default function SupportAuditPage() {
   return (
   
       <div className="space-y-6 p-6">
