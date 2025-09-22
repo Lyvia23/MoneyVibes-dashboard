@@ -29,11 +29,11 @@ export const FilterSection = ({
   setViewMode: (mode: 'table' | 'grid') => void;
 }) => {
   return (
-    <div className="bg-white p-4 rounded-lg border space-y-4">
-      <div className="flex flex-col lg:flex-row gap-4">
-        {/* Barre de recherche */}
-        <div className="lg:w-1/3">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+    <div className="bg-white p-3 sm:p-4 rounded-lg border space-y-3 sm:space-y-4">
+      <div className="flex flex-col space-y-3 sm:space-y-4">
+        {/* Barre de recherche - Pleine largeur sur mobile */}
+        <div className="w-full">
+          <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
             Rechercher
           </label>
           <div className="relative">
@@ -42,19 +42,20 @@ export const FilterSection = ({
               placeholder="Rechercher une tontine..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 h-10 border border-gray-200"
+              className="pl-10 pr-4 h-10 sm:h-11 border border-gray-200 text-sm"
             />
           </div>
         </div>
         
-        {/* Filtres */}
-        <div className="flex gap-4 lg:flex-1">
-          <div className="flex-1">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+        {/* Filtres - Responsive grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          {/* Type de tontine */}
+          <div className="w-full">
+            <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Type de tontine
             </label>
             <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="border border-gray-200">
+              <SelectTrigger className="border border-gray-200 h-10 sm:h-11 text-sm">
                 <SelectValue placeholder="Type" />
               </SelectTrigger>
               <SelectContent>
@@ -66,8 +67,9 @@ export const FilterSection = ({
             </Select>
           </div>
 
-          <div className="flex-1">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          {/* Date début */}
+          <div className="w-full">
+            <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Date début
             </label>
             <Input
@@ -75,12 +77,13 @@ export const FilterSection = ({
               placeholder="Date début"
               value={dateDebutFilter}
               onChange={(e) => setDateDebutFilter(e.target.value)}
-              className="border border-gray-200 text-black"
+              className="border border-gray-200 text-black h-10 sm:h-11 text-sm"
             />
           </div>
 
-          <div className="flex-1">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          {/* Date fin */}
+          <div className="w-full">
+            <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Date fin
             </label>
             <Input
@@ -88,33 +91,33 @@ export const FilterSection = ({
               placeholder="Date fin"
               value={dateFinFilter}
               onChange={(e) => setDateFinFilter(e.target.value)}
-              className="border border-gray-200 text-black"
+              className="border border-gray-200 text-black h-10 sm:h-11 text-sm"
             />
           </div>
 
-          {/* Vue Mode */}
-          <div className="flex-shrink-0">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          {/* Vue Mode - Centré sur mobile */}
+          <div className="w-full sm:w-auto sm:min-w-[140px] flex flex-col">
+            <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Affichage
             </label>
-            <div className="flex border rounded-md">
+            <div className="flex border rounded-md h-10 sm:h-11">
               <Button
                 variant={viewMode === 'table' ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => setViewMode('table')}
-                className="rounded-r-none flex items-center gap-1"
+                className="rounded-r-none flex-1 sm:flex-initial flex items-center justify-center gap-1 px-2 sm:px-3 text-xs sm:text-sm h-full"
               >
-                <Table2 className="h-4 w-4" />
-                <span className="hidden sm:inline">Tableau</span>
+                <Table2 className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="hidden xs:inline sm:inline">Tableau</span>
               </Button>
               <Button
                 variant={viewMode === 'grid' ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => setViewMode('grid')}
-                className="rounded-l-none flex items-center gap-1"
+                className="rounded-l-none flex-1 sm:flex-initial flex items-center justify-center gap-1 px-2 sm:px-3 text-xs sm:text-sm h-full"
               >
-                <Grid3X3 className="h-4 w-4" />
-                <span className="hidden sm:inline">Grille</span>
+                <Grid3X3 className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="hidden xs:inline sm:inline">Grille</span>
               </Button>
             </div>
           </div>
