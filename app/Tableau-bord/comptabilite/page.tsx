@@ -3,7 +3,6 @@
 import { GrandLivreComptable } from "@/src/components/comptabilité/GrandLivreComptable"
 import { GraphiqueFluxFinancier } from "@/src/components/comptabilité/GraphiqueFluxFinancier"
 import { SectionStats } from "@/src/components/comptabilité/SectionStats"
-import { PageWithHeader } from "@/src/components/PageWithHeader"
 import { useSetPageInfo } from "@/src/Context/pageContext"
 import { DonneeFlux, StatistiqueComptable, TransactionComptable } from "@/src/types/comptabilite"
 import { TrendingUp, TrendingDown, DollarSign, Receipt } from "lucide-react"

@@ -9,11 +9,9 @@ import { StatsGrid } from "@/src/components/dashboard/StatsCard"
 import { TontineTypesChart } from "@/src/components/dashboard/TontineTypesChart"
 import { TopUsersChart } from "@/src/components/dashboard/TopUsersChart"
 import { TransactionsChart } from "@/src/components/dashboard/TransactionsChart"
-import { PageWithHeader } from "@/src/components/PageWithHeader"
 import { useSetPageInfo } from "@/src/Context/pageContext"
 import { DashboardData, NotificationData } from "@/src/types/dashboard"
 import { useEffect, useState, useMemo } from "react"
-import DashboardLayout from "../layout"
 
 
 export default function DashboardPage() {

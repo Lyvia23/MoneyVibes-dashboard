@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from "react"
 import { useRouter } from "next/navigation" // Use App Router navigation
-import { PageWithHeader } from "@/src/components/PageWithHeader"
 import { Member } from "@/src/components/membres/MemberCard"
 import { MembersStatsCards } from "@/src/components/membres/MembersStatsCards"
 import { MembersFilters, FilterValues } from "@/src/components/membres/MembersFilters"

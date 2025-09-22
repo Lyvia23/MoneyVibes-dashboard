@@ -1,6 +1,5 @@
 "use client"
 
-import { PageWithHeader } from "@/src/components/PageWithHeader"
 import { PendingRequests } from "@/src/components/prets/PendingRequests"
 import { PretsHistorique } from "@/src/components/prets/PretsHistorique"
 import { RepaymentRate } from "@/src/components/prets/RepaymentRate"

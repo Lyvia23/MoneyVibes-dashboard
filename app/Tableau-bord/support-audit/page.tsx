@@ -2,14 +2,11 @@
 
 import { Ticket, Clock, CheckCircle, Timer } from "lucide-react"
 
-import { PageWithHeader } from "@/src/components/PageWithHeader"
 import { StatsCard } from "@/src/components/StatsCard";
-import { OngletSupport } from "@/src/components/support-audit/OngletSupport";
 import SupportDashboard from "@/src/components/support-audit/SupportDashboard";
 import JournalAudit from "@/src/components/support-audit/JournalAudit";
 import { useSetPageInfo } from "@/src/Context/pageContext";
 
-// Données pour les stats
 const donneesStats = [
   {
     label: "Tickets ouverts",
@@ -47,10 +44,7 @@ const donneesStats = [
   })
 export default function SupportAuditPage() {
   return (
-    <PageWithHeader
-      title="Support & Audit"
-      description="Gestion des réclamations, assistance et vérifications système"
-    >
+  
       <div className="space-y-6 p-6">
 
         {/* Stats cards */}
@@ -62,6 +56,5 @@ export default function SupportAuditPage() {
 
           <SupportDashboard />
           <JournalAudit />
-      </div>
-    </PageWithHeader>);
+      </div>);
 }

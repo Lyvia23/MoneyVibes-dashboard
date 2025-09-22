@@ -7,7 +7,6 @@ import { InformationsUtilisateur } from '@/src/components/kyc/InformationsUtilis
 import { DocumentsIdentite } from '@/src/components/kyc/DocumentsIdentite';
 import { VerificationValidation } from '@/src/components/kyc/VerificationValidation';
 import { HistoriqueActions } from '@/src/components/kyc/HistoriqueActions';
-import { PageWithHeader } from '@/src/components/PageWithHeader';
 import { useSetPageInfo } from '@/src/Context/pageContext';
 
 export default function ValidationKYCPage() {

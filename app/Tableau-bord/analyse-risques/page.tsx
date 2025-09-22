@@ -2,7 +2,6 @@
 import { ListeMembresRisque } from "@/src/components/analyse-risques/ListeMembresRisque"
 import { ScoreGlobalRisque } from "@/src/components/analyse-risques/ScoreGlobalRisque"
 import { StatistiquesRisques } from "@/src/components/analyse-risques/StatistiquesRisques"
-import { PageWithHeader } from "@/src/components/PageWithHeader"
 import { useSetPageInfo } from "@/src/Context/pageContext"
 
 

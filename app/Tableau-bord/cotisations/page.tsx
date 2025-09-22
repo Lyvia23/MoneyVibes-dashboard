@@ -4,7 +4,6 @@
 import { ContributionForm } from '@/src/components/cotisations/ContributionForm';
 import { ContributionHistory } from '@/src/components/cotisations/ContributionHistory';
 import { StatsCards } from '@/src/components/cotisations/StatsCards';
-import { PageWithHeader } from '@/src/components/PageWithHeader';
 import { useSetPageInfo } from '@/src/Context/pageContext';
 import React from 'react';
 
