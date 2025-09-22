@@ -8,7 +8,10 @@ import {
   CreditCard,
   MoveUp,
   TriangleAlert,
-  Minus
+  Minus,
+  CircleDollarSign,
+  PiggyBank,
+  TrendingUp
 } from 'lucide-react'
 import { StatsCardData } from "@/src/types/dashboard"
 import { cn } from "@/src/lib/utils"
@@ -18,6 +21,10 @@ const iconMap = {
   dollar: DollarSign,
   wallet: Wallet,
   credit: CreditCard,
+  circleDollar: CircleDollarSign,
+  piggyBank: PiggyBank,
+  trendingUp:TrendingUp
+  
 }
 
 interface StatsCardProps {

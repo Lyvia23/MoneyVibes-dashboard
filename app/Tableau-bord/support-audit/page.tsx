@@ -7,6 +7,7 @@ import { StatsCard } from "@/src/components/StatsCard";
 import { OngletSupport } from "@/src/components/support-audit/OngletSupport";
 import SupportDashboard from "@/src/components/support-audit/SupportDashboard";
 import JournalAudit from "@/src/components/support-audit/JournalAudit";
+import { useSetPageInfo } from "@/src/Context/pageContext";
 
 // Données pour les stats
 const donneesStats = [
@@ -39,7 +40,11 @@ const donneesStats = [
     iconBgColor: "bg-blue-100"
   }
 ]
-
+  useSetPageInfo({
+    title: "Support & Audit",
+    description: "Gestion des réclamations, assistance et vérifications système",
+    notificationCount: 3
+  })
 export default function SupportAuditPage() {
   return (
     <PageWithHeader

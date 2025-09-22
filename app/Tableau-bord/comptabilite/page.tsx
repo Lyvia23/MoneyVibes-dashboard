@@ -4,6 +4,7 @@ import { GrandLivreComptable } from "@/src/components/comptabilité/GrandLivreCo
 import { GraphiqueFluxFinancier } from "@/src/components/comptabilité/GraphiqueFluxFinancier"
 import { SectionStats } from "@/src/components/comptabilité/SectionStats"
 import { PageWithHeader } from "@/src/components/PageWithHeader"
+import { useSetPageInfo } from "@/src/Context/pageContext"
 import { DonneeFlux, StatistiqueComptable, TransactionComptable } from "@/src/types/comptabilite"
 import { TrendingUp, TrendingDown, DollarSign, Receipt } from "lucide-react"
 
@@ -111,23 +112,25 @@ export default function PageComptabilite() {
     }
   ]
 
+  useSetPageInfo({
+    title: "Comptabilité",
+    description: "Suivi des finances globales et grand livre comptable",
+    notificationCount: 3
+  })
+
   return (
-    <PageWithHeader
-      title="Comptabilité"
-      description="Suivi des finances globales et grand livre comptable"
-    >
-      <div className="space-y-6 p-6 overflow-x-hidden ">
-        {/* Section des statistiques */}
-        <SectionStats statistiques={statistiques} />
 
-       
-        {/* Section du graphique */}
-        <GraphiqueFluxFinancier donnees={donneesFlux} />
+    <div className="space-y-6 p-6 overflow-x-hidden ">
+      {/* Section des statistiques */}
+      <SectionStats statistiques={statistiques} />
 
-        {/* Section du grand livre comptable */}
-        <GrandLivreComptable transactions={transactionsComptables} />
-      </div>
-    </PageWithHeader>
+
+      {/* Section du graphique */}
+      <GraphiqueFluxFinancier donnees={donneesFlux} />
+
+      {/* Section du grand livre comptable */}
+      <GrandLivreComptable transactions={transactionsComptables} />
+    </div>
 
   )
 }

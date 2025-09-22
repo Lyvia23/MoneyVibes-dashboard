@@ -29,7 +29,7 @@ export function FiltresRisque({
             Niveau de risque
           </label>
           <Select value={filtreNiveau} onValueChange={setFiltreNiveau}>
-            <SelectTrigger className="w-full sm:w-[180px]">
+            <SelectTrigger className="w-full sm:w-[180px] border border-gray-200">
               <SelectValue placeholder="Tous les niveaux" />
             </SelectTrigger>
             <SelectContent>
@@ -47,7 +47,7 @@ export function FiltresRisque({
             Type de risque
           </label>
           <Select value={filtreType} onValueChange={setFiltreType}>
-            <SelectTrigger className="w-full sm:w-[180px]">
+            <SelectTrigger className="w-full sm:w-[180px] border border-gray-200">
               <SelectValue placeholder="Tous types" />
             </SelectTrigger>
             <SelectContent>
@@ -70,7 +70,7 @@ export function FiltresRisque({
               placeholder="Rechercher membre..."
               value={rechercheTexte}
               onChange={(e) => setRechercheTexte(e.target.value)}
-              className="pl-10"
+              className="pl-10 border border-gray-200 "
             />
           </div>
         </div>

@@ -87,17 +87,34 @@
   --foreground-secondary: #666666;
   --foreground-muted: #999999;
   
+  /* === VARIABLES SHADCN/UI OBLIGATOIRES === */
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --muted: #f8f9fa;
+  --muted-foreground: #666666;
+  --accent: #f1f3f4;
+  --accent-foreground: #1a1a1a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --input: #ffffff;
+  --ring: #3b82f6;
+  
   /* === COULEURS DE BORDURE === */
   --border: #e5e7eb;
   --border-secondary: #d1d5db;
   
   /* === SIDEBAR SPÉCIFIQUE === */
   --sidebar-bg: var(--primary);              /* Fond marron foncé */
+  --sidebar: var(--primary);
   --sidebar-foreground: #e5d4c7;             /* Texte beige clair */
-  --sidebar-item-hover: var(--primary-hover); /* Hover légèrement plus clair */
-  --sidebar-item-active: var(--secondary);   /* Élément actif en orange */
-  --sidebar-item-active-foreground: var(--secondary-foreground);
+  --sidebar-primary: var(--secondary);       /* Élément actif en orange */
+  --sidebar-primary-foreground: var(--secondary-foreground);
+  --sidebar-accent: var(--primary-hover);    /* Hover légèrement plus clair */
+  --sidebar-accent-foreground: #e5d4c7;
   --sidebar-border: #3d2318;                 /* Bordures dans la sidebar */
+  --sidebar-ring: var(--ring);
   
   /* === ÉTATS INTERACTIFS === */
   --success: #22c55e;
@@ -116,11 +133,7 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   
   /* === RAYONS DE BORDURE === */
-  --radius-sm: 0.25rem;
   --radius: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
 }
 
 /* Mode sombre */
@@ -133,11 +146,22 @@
   --foreground-secondary: #a3a3a3;
   --foreground-muted: #737373;
   
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --muted: #2a2a2a;
+  --muted-foreground: #a3a3a3;
+  --accent: #3a3a3a;
+  --accent-foreground: #ffffff;
+  --input: #2a2a2a;
+  
   --border: #2a2a2a;
   --border-secondary: #3a3a3a;
   
   /* Sidebar reste identique en mode sombre */
   --sidebar-bg: var(--primary);
+  --sidebar: var(--primary);
   --sidebar-foreground: #e5d4c7;
 }
 
@@ -212,7 +236,6 @@
   color: var(--secondary-foreground);
 }
 
-
 /* Styles spécifiques pour la sidebar responsive */
 
 /* Forcer les couleurs de la sidebar sur mobile */
@@ -251,93 +274,124 @@
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
-/* Fix global pour tous les Select de shadcn/ui */
-/* À ajouter dans votre globals.css */
 
-/* Conteneur principal du select content */
-[data-radix-select-content] {
-  background-color: white !important;
-  border: 1px solid rgb(229, 231, 235) !important;
-  border-radius: 8px !important;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
-  z-index: 1000 !important;
-  position: relative !important;
-  min-width: var(--radix-select-trigger-width) !important;
-  max-height: var(--radix-select-content-available-height) !important;
+/* === CORRECTIONS SHADCN/UI === */
+
+/* Fix pour les composants Button */
+.btn, 
+button[data-variant="outline"] {
+  background-color: var(--background) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--foreground) !important;
 }
 
-/* Viewport du select (conteneur des items) */
-[data-radix-select-viewport] {
-  background-color: white !important;
-  padding: 4px !important;
-}
-
-/* Items individuels */
-[data-radix-select-item] {
-  background-color: white !important;
-  color: rgb(17, 24, 39) !important;
-  padding: 8px 12px !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  transition: background-color 0.15s ease-in-out !important;
-}
-
-/* Item survolé ou sélectionné */
-[data-radix-select-item][data-highlighted] {
-  background-color: rgb(243, 244, 246) !important;
-  color: rgb(17, 24, 39) !important;
-  outline: none !important;
-}
-
-[data-radix-select-item][data-state="checked"] {
-  background-color: rgb(59, 130, 246) !important;
-  color: white !important;
-}
-
-/* Portal wrapper pour s'assurer du bon z-index */
+/* Fix pour les Popover et Calendar */
 [data-radix-popper-content-wrapper] {
   z-index: 1000 !important;
 }
 
-[data-radix-portal] {
+[data-radix-select-content],
+[data-radix-popover-content] {
+  background-color: var(--popover) !important;
+  color: var(--popover-foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-lg) !important;
   z-index: 1000 !important;
 }
 
-/* Mode sombre (si utilisé) */
-.dark [data-radix-select-content] {
-  background-color: rgb(31, 41, 55) !important;
-  border-color: rgb(75, 85, 99) !important;
+/* Fix spécifique pour le Calendar */
+.rdp {
+  background-color: var(--popover) !important;
+  color: var(--popover-foreground) !important;
+}
+
+.rdp-table {
+  background-color: transparent !important;
+}
+
+.rdp-head_cell,
+.rdp-cell {
+  background-color: transparent !important;
+}
+
+.rdp-button {
+  background-color: transparent !important;
+  color: var(--foreground) !important;
+  border: none !important;
+}
+
+.rdp-button:hover {
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+}
+
+.rdp-button[data-selected] {
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+}
+
+.rdp-button[data-today] {
+  font-weight: bold;
+}
+
+
+/* Mode sombre pour les composants */
+.dark [data-radix-select-content],
+.dark [data-radix-popover-content] {
+  background-color: var(--popover) !important;
+  border-color: var(--border) !important;
 }
 
 .dark [data-radix-select-viewport] {
-  background-color: rgb(31, 41, 55) !important;
+  background-color: var(--popover) !important;
 }
 
 .dark [data-radix-select-item] {
-  background-color: rgb(31, 41, 55) !important;
-  color: rgb(243, 244, 246) !important;
+  background-color: transparent !important;
+  color: var(--popover-foreground) !important;
 }
 
 .dark [data-radix-select-item][data-highlighted] {
-  background-color: rgb(55, 65, 81) !important;
-  color: rgb(243, 244, 246) !important;
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
 }
 
 .dark [data-radix-select-item][data-state="checked"] {
-  background-color: rgb(59, 130, 246) !important;
-  color: white !important;
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
 }
+
+.dark .rdp {
+  background-color: var(--popover) !important;
+  color: var(--popover-foreground) !important;
+}
+
+.dark .rdp-button {
+  color: var(--popover-foreground) !important;
+}
+
+.dark .rdp-button:hover {
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+}
+
 
 /* Forcer l'opacité et éliminer toute transparence */
 [data-radix-select-content],
 [data-radix-select-content] *,
 [data-radix-select-viewport],
-[data-radix-select-item] {
+[data-radix-select-item],
+[data-radix-popover-content],
+[data-radix-popover-content] *,
+.rdp,
+.rdp * {
   opacity: 1 !important;
 }
 
 /* Éliminer les backdrop-filter qui peuvent causer des problèmes */
-[data-radix-select-content] {
+[data-radix-select-content],
+[data-radix-popover-content] {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }

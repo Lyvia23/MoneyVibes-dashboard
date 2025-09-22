@@ -9,7 +9,9 @@ import {
   HandCoins,
   CheckCircle,
   Clock,
-  ExternalLink
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react"
 import { NotificationData } from "@/src/types/dashboard"
 import { cn } from "@/src/lib/utils"
@@ -46,6 +48,60 @@ const colorMap = {
     icon: 'text-green-600',
     badge: 'bg-green-100 text-green-800',
   },
+}
+
+interface PaginationProps {
+  currentPage: number
+  totalPages: number
+  onPageChange: (page: number) => void
+  totalItems: number
+  itemsPerPage: number
+}
+
+function Pagination({ currentPage, totalPages, onPageChange, totalItems, itemsPerPage }: PaginationProps) {
+  const startItem = (currentPage - 1) * itemsPerPage + 1
+  const endItem = Math.min(currentPage * itemsPerPage, totalItems)
+  
+  return (
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6">
+      <div className="text-sm text-gray-600">
+        Affichage de {startItem} à {endItem} sur {totalItems} notification{totalItems > 1 ? 's' : ''}
+      </div>
+      <div className="flex items-center space-x-2">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage <= 1}
+        >
+          <ChevronLeft className="h-4 w-4" />
+          <span className="hidden sm:inline ml-1">Précédent</span>
+        </Button>
+        <div className="flex space-x-1">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <Button
+              key={page}
+              variant={currentPage === page ? "default" : "outline"}
+              size="sm"
+              onClick={() => onPageChange(page)}
+              className={currentPage === page ? "bg-black hover:bg-black/10" : ""}
+            >
+              {page}
+            </Button>
+          ))}
+        </div>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage >= totalPages}
+        >
+          <span className="hidden sm:inline mr-1">Suivant</span>
+          <ChevronRight className="h-4 w-4" />
+        </Button>
+      </div>
+    </div>
+  )
 }
 
 interface NotificationItemProps {
@@ -123,9 +179,32 @@ interface NotificationsProps {
   loading?: boolean
   onAction?: (notification: NotificationData) => void
   className?: string
+  // Nouvelles props pour la pagination
+  currentPage?: number
+  itemsPerPage?: number
+  onPageChange?: (page: number) => void
+  enablePagination?: boolean
 }
 
-export function Notifications({ data, loading, onAction, className }: NotificationsProps) {
+export function Notifications({ 
+  data, 
+  loading, 
+  onAction, 
+  className,
+  currentPage = 1,
+  itemsPerPage = 5,
+  onPageChange,
+  enablePagination = false
+}: NotificationsProps) {
+  // Calculs pour la pagination
+  const totalItems = data.length
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
+  
+  // Données paginées
+  const paginatedData = enablePagination 
+    ? data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+    : data
+
   if (loading) {
     return (
       <Card className={className}>
@@ -196,15 +275,28 @@ export function Notifications({ data, loading, onAction, className }: Notificati
             </p>
           </div>
         ) : (
-          <div className="space-y-4">
-            {data.map((notification) => (
-              <NotificationItem
-                key={notification.id}
-                notification={notification}
-                onAction={onAction}
+          <>
+            <div className="space-y-4">
+              {paginatedData.map((notification) => (
+                <NotificationItem
+                  key={notification.id}
+                  notification={notification}
+                  onAction={onAction}
+                />
+              ))}
+            </div>
+
+            {/* Pagination */}
+            {enablePagination && totalPages > 1 && onPageChange && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={onPageChange}
+                totalItems={totalItems}
+                itemsPerPage={itemsPerPage}
               />
-            ))}
-          </div>
+            )}
+          </>
         )}
       </CardContent>
     </Card>

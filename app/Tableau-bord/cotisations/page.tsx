@@ -5,6 +5,7 @@ import { ContributionForm } from '@/src/components/cotisations/ContributionForm'
 import { ContributionHistory } from '@/src/components/cotisations/ContributionHistory';
 import { StatsCards } from '@/src/components/cotisations/StatsCards';
 import { PageWithHeader } from '@/src/components/PageWithHeader';
+import { useSetPageInfo } from '@/src/Context/pageContext';
 import React from 'react';
 
 // Types pour les données
@@ -148,12 +149,14 @@ export default function CotisationsPage() {
       lateMembers: lateCount
     }));
   };
+  useSetPageInfo({
+    title: "Gestion des cotisations",
+    description: "Enregistrez et suivez les cotisations des membres",
+    notificationCount: 3
+  })
 
   return (
-    <PageWithHeader
-      title="Gestion des cotisations"
-      description="Enregistrez et suivez les cotisations des membres"
-    >
+  
       <div className="space-y-6 p-6">
 
 
@@ -172,6 +175,6 @@ export default function CotisationsPage() {
           onUpdate={handleUpdateContribution}
           onDelete={handleDeleteContribution}
         />
-      </div></PageWithHeader>
+      </div>
   );
 }

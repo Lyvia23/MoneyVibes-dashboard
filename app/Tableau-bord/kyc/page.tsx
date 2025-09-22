@@ -6,6 +6,7 @@ import { Button } from '@/src/components/ui/button';
 import { Card, CardContent} from '@/src/components/ui/card';
 import { Badge } from '@/src/components/ui/badge';
 import { Eye, User, ChevronLeft, ChevronRight, Search, Filter } from 'lucide-react';
+import { useSetPageInfo } from '@/src/Context/pageContext';
 
 interface UtilisateurKYCListe {
   id: string;
@@ -179,11 +180,14 @@ export default function KYCListePage() {
     return buttons;
   };
 
+ useSetPageInfo({
+    title: "Gestion KYC",
+    description: "Liste des demandes de validation KYC",
+    notificationCount: 3
+  })
+  
   return (
-    <PageWithHeader
-      title="Gestion KYC"
-      description="Liste des demandes de validation KYC"
-    >
+ 
       <div className="space-y-6 p-6">
         <div className="container w-full">
           {/* Filtres et recherche */}
@@ -324,6 +328,5 @@ export default function KYCListePage() {
           )}
         </div>
       </div>
-    </PageWithHeader>
   );
 }

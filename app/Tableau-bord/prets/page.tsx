@@ -6,6 +6,7 @@ import { PretsHistorique } from "@/src/components/prets/PretsHistorique"
 import { RepaymentRate } from "@/src/components/prets/RepaymentRate"
 import { StatsGrid } from "@/src/components/prets/StatsGrid"
 import { UpcomingRepayments } from "@/src/components/prets/UpcomingRepayments"
+import { useSetPageInfo } from "@/src/Context/pageContext"
 import { useState } from "react"
 
 // Types pour les données
@@ -189,12 +190,14 @@ export default function LoanManagementPage() {
             // setLoanHistory(prev => prev.filter(loan => loan.id !== loanId))
         }
     }
+      useSetPageInfo({
+    title: "Gestion des prêts",
+    description: "Gérez les demandes et remboursements de prêts",
+    notificationCount: 3
+  })
 
     return (
-        <PageWithHeader
-            title="Gestion des prêts"
-            description="Gérez les demandes et remboursements de prêts"
-        >
+
             <div className="space-y-6 p-6">
                 {/* Section des statistiques */}
                 <StatsGrid data={statsData} />
@@ -228,7 +231,6 @@ export default function LoanManagementPage() {
                     />
                 </div>
             </div>
-        </PageWithHeader>
 
     )
 }

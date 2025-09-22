@@ -8,6 +8,7 @@ import { DocumentsIdentite } from '@/src/components/kyc/DocumentsIdentite';
 import { VerificationValidation } from '@/src/components/kyc/VerificationValidation';
 import { HistoriqueActions } from '@/src/components/kyc/HistoriqueActions';
 import { PageWithHeader } from '@/src/components/PageWithHeader';
+import { useSetPageInfo } from '@/src/Context/pageContext';
 
 export default function ValidationKYCPage() {
   const params = useParams();
@@ -82,12 +83,14 @@ export default function ValidationKYCPage() {
     console.log('Demande d\'informations supplémentaires pour ID:', id);
     // Logique de demande d'infos
   };
+ useSetPageInfo({
+    title: "Validation KYC",
+    description: "Vérification des documents d'identité",
+    notificationCount: 3
+  })
 
   return (
-    <PageWithHeader
-      title="Validation KYC"
-      description="Vérification des documents d'identité"
-    >
+
       <div className="space-y-6 p-6">
           
             <InformationsUtilisateur utilisateur={utilisateur} />
@@ -100,6 +103,5 @@ export default function ValidationKYCPage() {
             />
             <HistoriqueActions actions={actions} />
           </div>
-    </PageWithHeader>
   );
 }

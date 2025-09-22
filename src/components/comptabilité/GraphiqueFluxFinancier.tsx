@@ -325,7 +325,7 @@ export function GraphiqueFluxFinancier({ donnees }: GraphiqueFluxFinancierProps)
                     <span className="hidden sm:inline">Période</span>
                   </label>
                   <Select value={periode} onValueChange={setPeriode}>
-                    <SelectTrigger className="w-full">
+                    <SelectTrigger className="w-full border border-gray-200">
                       <SelectValue placeholder="Période" />
                     </SelectTrigger>
                     <SelectContent>
@@ -344,7 +344,7 @@ export function GraphiqueFluxFinancier({ donnees }: GraphiqueFluxFinancierProps)
                     <span className="hidden sm:inline">Type</span>
                   </label>
                   <Select value={typeTransaction} onValueChange={setTypeTransaction}>
-                    <SelectTrigger className="w-full">
+                    <SelectTrigger className="w-full border border-gray-200">
                       <SelectValue placeholder="Type" />
                     </SelectTrigger>
                     <SelectContent>
@@ -362,7 +362,7 @@ export function GraphiqueFluxFinancier({ donnees }: GraphiqueFluxFinancierProps)
                     <span className="hidden sm:inline">Catégorie</span>
                   </label>
                   <Select value={categorieAffichage} onValueChange={setCategorieAffichage}>
-                    <SelectTrigger className="w-full">
+                    <SelectTrigger className="w-full border border-gray-200">
                       <SelectValue placeholder="Catégorie" />
                     </SelectTrigger>
                     <SelectContent>
@@ -419,7 +419,7 @@ export function GraphiqueFluxFinancier({ donnees }: GraphiqueFluxFinancierProps)
             {(periode !== "toute-periode" || typeTransaction !== "toutes-transactions" || categorieAffichage !== "toutes-categories") && (
               <div className="flex flex-wrap gap-1 text-xs lg:text-sm text-gray-600">
                 {periode !== "toute-periode" && (
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                  <span className="bg-blue-100 text-blue-800 px-2 py-1  rounded">
                     {periode.replace("-", " ").replace(/^\w/, c => c.toUpperCase())}
                   </span>
                 )}

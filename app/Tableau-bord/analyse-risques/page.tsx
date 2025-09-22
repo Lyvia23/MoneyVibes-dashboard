@@ -3,15 +3,20 @@ import { ListeMembresRisque } from "@/src/components/analyse-risques/ListeMembre
 import { ScoreGlobalRisque } from "@/src/components/analyse-risques/ScoreGlobalRisque"
 import { StatistiquesRisques } from "@/src/components/analyse-risques/StatistiquesRisques"
 import { PageWithHeader } from "@/src/components/PageWithHeader"
+import { useSetPageInfo } from "@/src/Context/pageContext"
 
 
 export default function AnalyseDesRisques() {
+
+     useSetPageInfo({
+        title: "Analyse des risques", 
+        description: "Identification des risques liés aux prêts et retards de paiement",
+        notificationCount: 3
+      })
+
+
     return (
-        <PageWithHeader
-            title="Analyse des risques"
-            description="          Identification des risques liés aux prêts et retards de paiement
-"
-        >
+        
             <div className="space-y-6 p-6">
 
                 <StatistiquesRisques />
@@ -24,5 +29,5 @@ export default function AnalyseDesRisques() {
                         <ListeMembresRisque />
                     </div>
                 </div>
-        </PageWithHeader>);
+        );
 }

@@ -182,7 +182,7 @@ export function GrandLivreComptable({ transactions }: GrandLivreComptableProps) 
                   setRecherche(e.target.value)
                   setPageActuelle(1) // Reset à la page 1 lors de la recherche
                 }}
-                className="pl-9"
+                className="pl-9 border border-gray-200"
               />
             </div>
           </div>
