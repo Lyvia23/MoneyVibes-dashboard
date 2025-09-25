@@ -39,7 +39,7 @@ export default function BarreRechercheTickets({
           placeholder={placeholder}
           value={recherche}
           onChange={(e) => setRecherche(e.target.value)}
-          className="pl-10 border border-gray-200"
+          className="pl-10 "
         />
       </div>
 

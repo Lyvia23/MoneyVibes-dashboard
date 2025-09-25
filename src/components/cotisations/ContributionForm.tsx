@@ -84,10 +84,10 @@ export function ContributionForm({ members, onSubmit }: ContributionFormProps) {
               value={formData.memberId}
               onValueChange={(value) => setFormData(prev => ({ ...prev, memberId: value }))}
             >
-              <SelectTrigger className="h-12 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              <SelectTrigger className="h-12 bg-gray-50  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 <SelectValue placeholder="Sélectionner un membre" className="text-base" />
               </SelectTrigger>
-              <SelectContent className="bg-white border border-gray-200 shadow-lg z-[1000]">
+              <SelectContent className="bg-white  shadow-lg z-[1000]">
                 {members.map((member) => (
                   <SelectItem
                     key={member.id}
@@ -114,7 +114,7 @@ export function ContributionForm({ members, onSubmit }: ContributionFormProps) {
                 id="amount"
                 type="number"
                 placeholder="10000"
-                className="h-12 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="h-12 bg-gray-50  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={formData.amount}
                 onChange={(e) => setFormData(prev => ({ ...prev, amount: e.target.value }))}
                 min="0"
@@ -130,7 +130,7 @@ export function ContributionForm({ members, onSubmit }: ContributionFormProps) {
               <Input
                 id="date"
                 type="date"
-                className="h-12 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="h-12 bg-gray-50  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={formData.date}
                 onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
               />

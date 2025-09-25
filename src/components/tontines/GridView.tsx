@@ -2,15 +2,16 @@
 
 import { Tontine } from "@/src/types/tontine";
 import { Card, CardContent, CardHeader, CardTitle } from '@/src/components/ui/card';
-import {  DollarSign, Users, Edit, Trash2, MoreHorizontal, Calendar } from 'lucide-react';
+import { DollarSign, Users, Edit, Trash2, MoreHorizontal, Calendar, Eye } from 'lucide-react';
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/src/components/ui/dropdown-menu';
 import { Button } from '@/src/components/ui/button';
 import { Badge } from '@/src/components/ui/badge';
-export const GridView = ({ tontines, onEdit, onDelete }: { 
-  tontines: Tontine[], 
-  onEdit: (id: string) => void, 
-  onDelete: (id: string) => void 
+export const GridView = ({ tontines, onEdit, onDelete, onView }: {
+  tontines: Tontine[],
+  onEdit: (id: string) => void,
+  onDelete: (id: string) => void,
+  onView: (id: string) => void
 }) => {
   const getTypeColor = (type: string) => {
     switch (type) {
@@ -44,11 +45,15 @@ export const GridView = ({ tontines, onEdit, onDelete }: {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => onView(tontine.id)}>
+                    <Eye className="mr-2 h-4 w-4" />
+                    Voir pus
+                  </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => onEdit(tontine.id)}>
                     <Edit className="mr-2 h-4 w-4" />
                     Modifier
                   </DropdownMenuItem>
-                  <DropdownMenuItem 
+                  <DropdownMenuItem
                     onClick={() => onDelete(tontine.id)}
                     className="text-red-600"
                   >
@@ -78,7 +83,7 @@ export const GridView = ({ tontines, onEdit, onDelete }: {
                 <span>{tontine.montant.toLocaleString()} XOF</span>
               </div>
             </div>
-            
+
             <div className="space-y-2 text-xs text-gray-500">
               <div className="flex items-center">
                 <Calendar className="h-3 w-3 mr-1" />
@@ -96,8 +101,8 @@ export const GridView = ({ tontines, onEdit, onDelete }: {
                 <span className="font-medium">{tontine.progression}%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+                <div
+                  className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${tontine.progression}%` }}
                 ></div>
               </div>

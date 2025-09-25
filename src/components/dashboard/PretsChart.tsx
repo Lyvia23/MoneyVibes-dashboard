@@ -25,7 +25,7 @@ export function PretsChart({ data, loading, className }: PretsChartProps) {
     if (active && payload && payload.length > 0) {
       const data = payload[0].payload
       return (
-        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
+        <div className="bg-white p-3  rounded-lg shadow-lg">
           <p className="font-medium text-sm">{data.name}</p>
           <p className="text-xs text-muted-foreground">
             {data.count} prêts ({data.value}%)

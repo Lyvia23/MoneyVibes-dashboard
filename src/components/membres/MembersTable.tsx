@@ -309,7 +309,7 @@ export function MembersTable({
       {/* Version Mobile - Cards */}
       <div className="block lg:hidden space-y-4">
         {currentMembers.map((member) => (
-          <div key={member.id} className="bg-white border border-gray-200 rounded-lg p-4 space-y-3">
+          <div key={member.id} className="bg-white  rounded-lg p-4 space-y-3">
             {/* Header avec avatar et nom */}
             <div className="flex items-center gap-3">
               <Avatar className="h-12 w-12">
@@ -392,7 +392,7 @@ export function MembersTable({
 
       {/* Version Desktop - Tableau */}
       <div className="hidden lg:block">
-        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+        <div className="bg-white  rounded-lg overflow-hidden">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>

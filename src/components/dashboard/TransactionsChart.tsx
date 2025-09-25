@@ -21,7 +21,7 @@ export const TransactionsChart = ({ data, loading = false, className = "" }: Tra
 
   if (loading) {
     return (
-      <div className={`bg-white rounded-lg border border-gray-200 p-6 ${className}`}>
+      <div className={`bg-white rounded-lg  p-6 ${className}`}>
         <ChartSkeleton />
       </div>
     )
@@ -44,7 +44,7 @@ export const TransactionsChart = ({ data, loading = false, className = "" }: Tra
   }
 
   return (
-    <div className={`bg-white rounded-lg border border-gray-200 p-6 ${className}`}>
+    <div className={`bg-white shadow-lg rounded-lg  p-6 ${className}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
           <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">

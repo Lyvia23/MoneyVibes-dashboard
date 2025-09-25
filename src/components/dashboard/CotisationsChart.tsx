@@ -22,7 +22,7 @@ export function CotisationsChart({ data, loading, className }: CotisationsChartP
 
   if (loading) {
     return (
-      <Card className={`flex flex-col ${className}`}>
+      <Card className={`bg-white shadow-lg rounded-lg  p-6 ${className}`}>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 px-4 md:px-6">
           <CardTitle className="text-base md:text-lg font-semibold">
             Évolution des cotisations
@@ -41,7 +41,7 @@ export function CotisationsChart({ data, loading, className }: CotisationsChartP
   }
 
   return (
-    <Card className={`flex flex-col ${className}`}>
+    <Card className={`bg-white shadow-lg rounded-lg  p-6 ${className}`}>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 px-4 md:px-6">
         <CardTitle className="text-base md:text-lg font-semibold">
           Évolution des cotisations

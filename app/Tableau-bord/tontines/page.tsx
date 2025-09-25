@@ -188,15 +188,19 @@ export default function TontinePage() {
     setCurrentPage(1);
   }, [searchTerm, typeFilter, dateDebutFilter, dateFinFilter]);
 
-  const handleEdit = (id: string) => {
-    console.log('Edit tontine:', id);
-    // Ici vous pouvez naviguer vers la page d'édition ou ouvrir un modal
-  };
+ const handleEdit = (id: string) => {
+    };
 
   const handleDelete = (id: string) => {
     console.log('Delete tontine:', id);
     // Ici vous pouvez afficher une confirmation et supprimer la tontine
   };
+   const handleView = (id: string) => {
+      router.push(`/Tableau-bord/tontines/${id}`);
+
+    // Ici vous pouvez afficher les détails de la tontine
+  };
+
 
 const router = useRouter();
 
@@ -242,15 +246,17 @@ const router = useRouter();
           <>
             {viewMode === 'table' ? (
               <TableView 
-                tontines={paginatedTontines} 
-                onEdit={handleEdit} 
-                onDelete={handleDelete} 
-              />
+                  tontines={paginatedTontines}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete} 
+                  onView={handleView}              />
             ) : (
               <GridView 
                 tontines={paginatedTontines} 
                 onEdit={handleEdit} 
                 onDelete={handleDelete} 
+               onView={handleView}             
+
               />
             )}
 

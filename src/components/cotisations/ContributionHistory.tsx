@@ -321,7 +321,7 @@ export function ContributionHistory({
             {/* Filtres */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full sm:w-[160px] h-10 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <SelectTrigger className="w-full sm:w-[160px] h-10 bg-gray-50  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -333,7 +333,7 @@ export function ContributionHistory({
               </Select>
 
               <Select value={monthFilter} onValueChange={setMonthFilter}>
-                <SelectTrigger className="w-full sm:w-[140px] h-10 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <SelectTrigger className="w-full sm:w-[140px] h-10 bg-gray-50  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

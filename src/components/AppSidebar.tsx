@@ -12,11 +12,12 @@ import {
   HelpCircle,
   Calculator,
   Verified,
-  X
+  X,
+  ArrowLeftRight
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState, useEffect } from "react"
+import {useEffect } from "react"
 import {
   Sidebar,
   SidebarContent,
@@ -32,15 +33,15 @@ import {
 const menuItems = [
   { title: "Tableau de bord", url: "/Tableau-bord/dashboard", icon: LayoutDashboard },
   { title: "Tontines", url: "/Tableau-bord/tontines", icon: HandCoins },
-
   { title: "Membres", url: "/Tableau-bord/membres", icon: Users },
-  { title: "Cotisations", url: "/Tableau-bord/cotisations", icon: HandCoins },
-  { title: "Prêts", url: "/Tableau-bord/prets", icon: CreditCard },
+  { title: "Cotisations", url: "/Tableau-bord/cotisations", icon: CreditCard },
+  { title: "Prêts", url: "/Tableau-bord/prets", icon: Wallet },
+  { title: "Transactions", url: "/Tableau-bord/transactions", icon: ArrowLeftRight },
   { title: "Assemblées", url: "/Tableau-bord/assemblees", icon: Users2 },
-  { title: "Comptabilité", url: "/Tableau-bord/comptabilite", icon: Wallet },
+  { title: "Comptabilité", url: "/Tableau-bord/comptabilite", icon: Calculator },
   { title: "Analyse des risques", url: "/Tableau-bord/analyse-risques", icon: TrendingUp },
   { title: "Support & Audit", url: "/Tableau-bord/support-audit", icon: HelpCircle },
-  { title: "Caisse", url: "/Tableau-bord/caisse", icon: Calculator },
+  { title: "Caisse", url: "/Tableau-bord/caisse", icon: Wallet },
   { title: "Paramètres", url: "/Tableau-bord/parametres", icon: Settings },
   { title: "KYC", url: "/Tableau-bord/kyc", icon: Verified },
 ]
@@ -66,6 +67,14 @@ export function AppSidebar() {
   const isActive = (path: string) => {
     if (path === "/Tableau-bord/kyc") {
       return pathname?.startsWith("/Tableau-bord/kyc")
+    }
+    // Gestion spéciale pour les tontines (détails et création)
+    if (path === "/Tableau-bord/tontines") {
+      return pathname?.startsWith("/Tableau-bord/tontines")
+    }
+    // Gestion spéciale pour les membres
+    if (path === "/Tableau-bord/membres") {
+      return pathname?.startsWith("/Tableau-bord/membres")
     }
     return pathname === path
   }
@@ -182,7 +191,7 @@ export function AppSidebar() {
                       title={collapsed ? item.title : undefined}
                     >
                       <item.icon
-                        className="h-5 w-5 flex-shrink-0"
+                        className={`flex-shrink-0 ${collapsed ? 'h-6 w-6' : 'h-5 w-5'}`}
                         style={{
                           color: isActive(item.url) ? '#ffffff' : '#e5d4c7'
                         }}

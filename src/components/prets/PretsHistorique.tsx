@@ -198,7 +198,7 @@ export function PretsHistorique({
             Historique des prêts
           </CardTitle>
           <Select value={statusFilter} onValueChange={handleStatusFilter}>
-            <SelectTrigger className="w-full sm:w-48 h-10 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <SelectTrigger className="w-full sm:w-48 h-10 bg-gray-50  rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               <SelectValue placeholder="Tous les statuts" />
             </SelectTrigger>
             <SelectContent>

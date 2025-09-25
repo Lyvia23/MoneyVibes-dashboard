@@ -97,7 +97,7 @@ export function MemberCard({
   }
 
   return (
-    <Card className={cn("group relative overflow-hidden bg-white border border-gray-200 ", className)}>
+    <Card className={cn("group relative overflow-hidden bg-white  ", className)}>
       <CardContent className="p-6">
         {/* Header avec avatar, nom, statut et menu */}
         <div className="flex items-start justify-between mb-4">

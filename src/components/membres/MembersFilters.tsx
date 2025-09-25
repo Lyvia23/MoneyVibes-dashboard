@@ -87,7 +87,7 @@ export function MembersFilters({
             placeholder="Rechercher un membre..."
             value={filters.search}
             onChange={(e) => updateFilter("search", e.target.value)}
-            className="pl-10 pr-4 h-10 w-full border border-gray-200"
+            className="pl-10 pr-4 h-10 w-full "
           />
         </div>
 
@@ -124,7 +124,7 @@ export function MembersFilters({
           value={filters.accountStatus} 
           onValueChange={(value) => updateFilter("accountStatus", value)}
         >
-          <SelectTrigger className="w-full sm:w-[160px] h-9 border border-gray-200">
+          <SelectTrigger className="w-full sm:w-[160px] h-9 ">
             <SelectValue placeholder="Statut compte" />
           </SelectTrigger>
           <SelectContent>
@@ -140,7 +140,7 @@ export function MembersFilters({
           value={filters.accountType} 
           onValueChange={(value) => updateFilter("accountType", value)}
         >
-          <SelectTrigger className="w-full sm:w-[160px] h-9 border border-gray-200">
+          <SelectTrigger className="w-full sm:w-[160px] h-9 ">
             <SelectValue placeholder="Type compte" />
           </SelectTrigger>
           <SelectContent>
@@ -155,7 +155,7 @@ export function MembersFilters({
           value={filters.kycStatus} 
           onValueChange={(value) => updateFilter("kycStatus", value)}
         >
-          <SelectTrigger className="w-full sm:w-[160px] h-9 border border-gray-200">
+          <SelectTrigger className="w-full sm:w-[160px] h-9 ">
             <SelectValue placeholder="Statut KYC" />
           </SelectTrigger>
           <SelectContent>
@@ -171,7 +171,7 @@ export function MembersFilters({
           value={filters.sortBy} 
           onValueChange={(value) => updateFilter("sortBy", value)}
         >
-          <SelectTrigger className="w-full sm:w-[140px] h-9 border border-gray-200">
+          <SelectTrigger className="w-full sm:w-[140px] h-9 ">
             <SelectValue placeholder="Trier par" />
           </SelectTrigger>
           <SelectContent>
@@ -272,7 +272,7 @@ export function MembersFilters({
                 placeholder="0"
                 value={filters.walletMin}
                 onChange={(e) => updateFilter("walletMin", e.target.value)}
-                className="h-8 border border-gray-200"
+                className="h-8 "
               />
             </div>
 
@@ -286,7 +286,7 @@ export function MembersFilters({
                 placeholder="1000000"
                 value={filters.walletMax}
                 onChange={(e) => updateFilter("walletMax", e.target.value)}
-                className="h-8 border border-gray-200"
+                className="h-8 "
               />
             </div>
           </div>

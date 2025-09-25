@@ -64,7 +64,6 @@ function DashboardContent({ children }: { children: React.ReactNode }) {
                 className="
                   flex items-center justify-center
                   w-10 h-10 rounded-lg
-                  border border-gray-200
                   hover:bg-gray-50 hover:border-gray-300
                   transition-all duration-200
                   focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2

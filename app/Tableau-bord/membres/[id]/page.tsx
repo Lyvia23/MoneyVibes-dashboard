@@ -307,7 +307,7 @@ const InfoCard = ({
   children: React.ReactNode
   action?: React.ReactNode 
 }) => (
-  <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+  <div className="bg-white rounded-lg  overflow-hidden">
     <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
       <div className="flex items-center space-x-2">
         <Icon className="h-5 w-5 text-gray-600" />
@@ -544,7 +544,7 @@ export default function MemberDetailPage({ params }: { params: { id: string } })
           }
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-        <div className="bg-white border border-gray-200 p-4 rounded-lg">
+        <div className="bg-white  p-4 rounded-lg">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-black  text-sm font-medium">Solde disponible</p>
@@ -556,7 +556,7 @@ export default function MemberDetailPage({ params }: { params: { id: string } })
               </div>
             </div>
             
-            <div className="bg-white border border-gray-200 p-4 rounded-lg">
+            <div className="bg-white  p-4 rounded-lg">
               <div className="flex items-center justify-between">
                 <div>
                   <p className=" text-sm font-medium">Solde principal</p>
@@ -568,7 +568,7 @@ export default function MemberDetailPage({ params }: { params: { id: string } })
               </div>
             </div>
             
-            <div className="bg-white border border-gray-200 p-4 rounded-lg">
+            <div className="bg-white  p-4 rounded-lg">
               <div className="flex items-center justify-between">
                 <div>
                   <p className=" text-sm font-medium">Solde gelé</p>
@@ -580,7 +580,7 @@ export default function MemberDetailPage({ params }: { params: { id: string } })
               </div>
             </div>
             
-            <div className="bg-white border border-gray-200 p-4 rounded-lg">
+            <div className="bg-white  p-4 rounded-lg">
               <div className="flex items-center justify-between">
                 <div>
                   <p className=" text-sm font-medium">Points fidélité</p>
@@ -840,7 +840,7 @@ export default function MemberDetailPage({ params }: { params: { id: string } })
               </h4>
               <div className="space-y-3 max-h-64 overflow-y-auto">
                 {userData.activity.recentActions.map((action, index) => (
-                  <div key={index} className="flex items-start space-x-3 p-3 border border-gray-200 rounded-lg">
+                  <div key={index} className="flex items-start space-x-3 p-3  rounded-lg">
                     <div className="flex-shrink-0">
                       <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                     </div>
@@ -869,7 +869,7 @@ export default function MemberDetailPage({ params }: { params: { id: string } })
             </h4>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-white border border-gray-200 p-4 rounded-lg">
+              <div className="bg-white  p-4 rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-red-600 text-sm font-medium">Reçus</p>
@@ -881,10 +881,10 @@ export default function MemberDetailPage({ params }: { params: { id: string } })
                 </div>
               </div>
               
-              <div className="bg-white border border-gray-200 p-4 rounded-lg">
+              <div className="bg-white  p-4 rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="bg-white border border-gray-200 text-sm font-medium">Émis</p>
+                    <p className="bg-white  text-sm font-medium">Émis</p>
                     <p className="text-xl font-bold text-blue-700">
                       {userData.activity.reports.sent}
                     </p>
@@ -893,7 +893,7 @@ export default function MemberDetailPage({ params }: { params: { id: string } })
                 </div>
               </div>
               
-              <div className="bg-white border border-gray-200 p-4 rounded-lg">
+              <div className="bg-white  p-4 rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-purple-600 text-sm font-medium">Score Risque</p>
@@ -940,28 +940,28 @@ export default function MemberDetailPage({ params }: { params: { id: string } })
             
             <div className="flex flex-wrap gap-3">
               {userData.status === 'active' ? (
-                <button className="flex items-center space-x-2 px-4 py-2 bg-white border border-gray-200 text-red-700 rounded-lg hover:bg-red-200 transition-colors">
+                <button className="flex items-center space-x-2 px-4 py-2 bg-white  text-red-700 rounded-lg hover:bg-red-200 transition-colors">
                   <Lock className="h-4 w-4" />
                   <span>Suspendre compte</span>
                 </button>
               ) : (
-                <button className="flex items-center space-x-2 px-4 py-2 bg-white border border-gray-200 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                <button className="flex items-center space-x-2 px-4 py-2 bg-white  text-green-700 rounded-lg hover:bg-green-200 transition-colors">
                   <Unlock className="h-4 w-4" />
                   <span>Réactiver compte</span>
                 </button>
               )}
               
-              <button className="flex items-center space-x-2 px-4 py-2 bg-white border border-gray-200 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors">
+              <button className="flex items-center space-x-2 px-4 py-2 bg-white  text-orange-700 rounded-lg hover:bg-orange-200 transition-colors">
                 <AlertTriangle className="h-4 w-4" />
                 <span>Signaler utilisateur</span>
               </button>
               
-              <button className="flex items-center space-x-2 px-4 py-2 bg-white border border-gray-200 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors">
+              <button className="flex items-center space-x-2 px-4 py-2 bg-white  text-blue-700 rounded-lg hover:bg-blue-200 transition-colors">
                 <Edit3 className="h-4 w-4" />
                 <span>Modifier profil</span>
               </button>
               
-              <button className="flex items-center space-x-2 px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+              <button className="flex items-center space-x-2 px-4 py-2 bg-white  text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
                 <Download className="h-4 w-4" />
                 <span>Exporter données</span>
               </button>

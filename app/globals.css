@@ -45,9 +45,23 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter);
+  }
+  
+  /* Classe utilitaire pour la police mono */
+  .font-mono {
+    font-family: var(--font-jetbrains-mono) !important;
+  }
+  
+  /* Classe utilitaire pour la police inter */
+  .font-inter {
+    font-family: var(--font-inter) !important;
+  }
   html, body {
     height: 100%;
     margin: 0;
@@ -58,60 +72,12 @@
     @apply bg-background text-foreground;
   }
 
-  /* === STYLES PAR DÉFAUT POUR LES INPUTS === */
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="number"],
-  input[type="tel"],
-  input[type="url"],
-  input[type="search"],
-  input[type="date"],
-  input[type="datetime-local"],
-  input[type="time"],
-  textarea,
-  select {
-    @apply flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors;
-    @apply file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground;
-    @apply placeholder:text-muted-foreground;
-    @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring;
-    @apply disabled:cursor-not-allowed disabled:opacity-50;
-  }
-
-  /* Spécifique pour textarea */
-  textarea {
-    @apply min-h-[60px] resize-y;
-  }
-
-  /* Spécifique pour select */
-  select {
-    @apply cursor-pointer bg-background;
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
-    background-position: right 8px center;
-    background-repeat: no-repeat;
-    background-size: 16px 12px;
-    padding-right: 40px;
-  }
-
-  /* Mode sombre pour select */
-  .dark select {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%29a3a3a3' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
-  }
-
-  /* Styles pour les checkboxes et radio buttons */
-  input[type="checkbox"],
-  input[type="radio"] {
-    @apply h-4 w-4 rounded border border-primary text-primary;
-    @apply focus:ring-2 focus:ring-primary focus:ring-offset-2;
-    @apply disabled:cursor-not-allowed disabled:opacity-50;
-  }
-
-  input[type="radio"] {
-    @apply rounded-full;
-  }
 }
 
 :root {
+   --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, monospace;
+
   /* === COULEURS PRIMAIRES === */
   --primary: #2c1810;           /* Marron foncé - couleur principale */
   --primary-foreground: #ffffff;
@@ -150,13 +116,15 @@
   --accent-foreground: #1a1a1a;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --input: #ffffff;
-  --ring: #3b82f6;
+   --input: #f8f9fa;                    /* Changé de #ffffff à un gris très clair */
+  --border: #e5e7eb;                   /* Bordure par défaut plus visible */
+  --border-secondary: #d1d5db;         /* Bordure secondaire plus contrastée */
+  --ring: #f59e42;                     /* Utilisez votre couleur secondaire pour le focus */
   
-  /* === COULEURS DE BORDURE === */
-  --border: #e5e7eb;
-  --border-secondary: #d1d5db;
-  
+  /* Ajout de variables spécifiques pour les inputs */
+  --input-border: #d1d5db;
+  --input-border-focus: #f59e42;       /* Votre orange */
+  --input-border-hover: #9ca3af;
   /* === SIDEBAR SPÉCIFIQUE === */
   --sidebar-bg: var(--primary);              /* Fond marron foncé */
   --sidebar: var(--primary);
@@ -206,10 +174,12 @@
   --muted-foreground: #a3a3a3;
   --accent: #3a3a3a;
   --accent-foreground: #ffffff;
-  --input: #2a2a2a;
-  
-  --border: #2a2a2a;
-  --border-secondary: #3a3a3a;
+    --input: #374151;                    /* Gris plus visible en mode sombre */
+  --border: #4b5563;                   /* Bordure plus visible en mode sombre */
+  --border-secondary: #6b7280;
+  --input-border: #4b5563;
+  --input-border-focus: #f59e42;
+  --input-border-hover: #6b7280;
   
   /* Sidebar reste identique en mode sombre */
   --sidebar-bg: var(--primary);
@@ -327,123 +297,140 @@
   outline-offset: 2px;
 }
 
-/* === CORRECTIONS SHADCN/UI === */
 
-/* Fix pour les composants Button */
-.btn, 
-button[data-variant="outline"] {
-  background-color: var(--background) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--foreground) !important;
+
+/* Forcer les bordures sur tous les inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+textarea,
+select,
+[role="combobox"],
+.input-class {
+  border: 1px solid var(--input-border) !important;
+  background-color: var(--input) !important;
+  transition: all 0.2s ease-in-out !important;
 }
 
-/* Fix pour les Popover et Calendar */
-[data-radix-popper-content-wrapper] {
-  z-index: 1000 !important;
+/* États hover */
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+input[type="tel"]:hover,
+input[type="url"]:hover,
+input[type="number"]:hover,
+textarea:hover,
+select:hover,
+[role="combobox"]:hover {
+  border-color: var(--input-border-hover) !important;
 }
 
-[data-radix-select-content],
-[data-radix-popover-content] {
-  background-color: var(--popover) !important;
-  color: var(--popover-foreground) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
-  box-shadow: var(--shadow-lg) !important;
-  z-index: 1000 !important;
+/* États focus */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus,
+[role="combobox"]:focus,
+input[type="text"]:focus-visible,
+input[type="email"]:focus-visible,
+input[type="password"]:focus-visible,
+input[type="search"]:focus-visible,
+input[type="tel"]:focus-visible,
+input[type="url"]:focus-visible,
+input[type="number"]:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="combobox"]:focus-visible {
+  border-color: var(--input-border-focus) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgb(245 158 66 / 0.1) !important;
 }
 
-/* Fix spécifique pour le Calendar */
-.rdp {
-  background-color: var(--popover) !important;
-  color: var(--popover-foreground) !important;
+/* Styles spécifiques pour les composants shadcn */
+[data-slot="input"] {
+  border: 1px solid var(--input-border) !important;
+  background-color: var(--input) !important;
 }
 
-.rdp-table {
-  background-color: transparent !important;
+[data-slot="input"]:hover {
+  border-color: var(--input-border-hover) !important;
 }
 
-.rdp-head_cell,
-.rdp-cell {
-  background-color: transparent !important;
+[data-slot="input"]:focus,
+[data-slot="input"]:focus-visible {
+  border-color: var(--input-border-focus) !important;
+  box-shadow: 0 0 0 3px rgb(245 158 66 / 0.1) !important;
 }
 
-.rdp-button {
-  background-color: transparent !important;
-  color: var(--foreground) !important;
-  border: none !important;
+/* Correction pour les selects avec Radix UI */
+[data-radix-select-trigger] {
+  border: 1px solid var(--input-border) !important;
+  background-color: var(--input) !important;
 }
 
-.rdp-button:hover {
-  background-color: var(--accent) !important;
-  color: var(--accent-foreground) !important;
+[data-radix-select-trigger]:hover {
+  border-color: var(--input-border-hover) !important;
 }
 
-.rdp-button[data-selected] {
-  background-color: var(--primary) !important;
-  color: var(--primary-foreground) !important;
+[data-radix-select-trigger]:focus,
+[data-radix-select-trigger][data-state="open"] {
+  border-color: var(--input-border-focus) !important;
+  box-shadow: 0 0 0 3px rgb(245 158 66 / 0.1) !important;
 }
 
-.rdp-button[data-today] {
-  font-weight: bold;
+/* Pour les boutons qui ressemblent à des inputs */
+button[role="combobox"] {
+  border: 1px solid var(--input-border) !important;
+  background-color: var(--input) !important;
 }
 
-
-/* Mode sombre pour les composants */
-.dark [data-radix-select-content],
-.dark [data-radix-popover-content] {
-  background-color: var(--popover) !important;
-  border-color: var(--border) !important;
+button[role="combobox"]:hover {
+  border-color: var(--input-border-hover) !important;
 }
 
-.dark [data-radix-select-viewport] {
-  background-color: var(--popover) !important;
+button[role="combobox"]:focus,
+button[role="combobox"][data-state="open"] {
+  border-color: var(--input-border-focus) !important;
+  box-shadow: 0 0 0 3px rgb(245 158 66 / 0.1) !important;
 }
 
-.dark [data-radix-select-item] {
-  background-color: transparent !important;
-  color: var(--popover-foreground) !important;
+/* Correction spécifique pour votre input de recherche */
+.lucide-search + input {
+  border: 1px solid var(--input-border) !important;
+  background-color: var(--input) !important;
 }
 
-.dark [data-radix-select-item][data-highlighted] {
-  background-color: var(--accent) !important;
-  color: var(--accent-foreground) !important;
+/* Désactiver les styles Tailwind qui pourraient interférer */
+.border-input {
+  border-color: var(--input-border) !important;
 }
 
-.dark [data-radix-select-item][data-state="checked"] {
-  background-color: var(--primary) !important;
-  color: var(--primary-foreground) !important;
+.bg-transparent {
+  background-color: var(--input) !important;
 }
 
-.dark .rdp {
-  background-color: var(--popover) !important;
-  color: var(--popover-foreground) !important;
+/* Mode sombre spécifique */
+.dark input[type="text"],
+.dark input[type="email"],
+.dark input[type="password"],
+.dark input[type="search"],
+.dark input[type="tel"],
+.dark input[type="url"],
+.dark input[type="number"],
+.dark textarea,
+.dark select,
+.dark [role="combobox"],
+.dark [data-slot="input"] {
+  color: #f9fafb !important;
 }
 
-.dark .rdp-button {
-  color: var(--popover-foreground) !important;
-}
-
-.dark .rdp-button:hover {
-  background-color: var(--accent) !important;
-  color: var(--accent-foreground) !important;
-}
-
-
-/* Forcer l'opacité et éliminer toute transparence */
-[data-radix-select-content],
-[data-radix-select-content] *,
-[data-radix-select-viewport],
-[data-radix-select-item],
-[data-radix-popover-content],
-[data-radix-popover-content] *,
-.rdp,
-.rdp * {
-  opacity: 1 !important;
-}
-
-/* Éliminer les backdrop-filter qui peuvent causer des problèmes */
-[data-radix-select-content],
-[data-radix-popover-content] {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}

@@ -47,7 +47,7 @@ interface DropdownMenuItemProps {
 
 // Composants UI avec types TypeScript
 const Card = ({ children, className = "" }: CardProps) => (
-  <div className={`bg-white shadow-lg rounded-lg border border-gray-200 ${className}`}>
+  <div className={`bg-white shadow-lg rounded-lg  ${className}`}>
     {children}
   </div>
 )

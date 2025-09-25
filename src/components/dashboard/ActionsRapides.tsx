@@ -2,6 +2,7 @@
 
 import { Plus, UserCheck, Send, FileText } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { Card, CardContent, CardDescription, CardTitle } from "../ui/card"
 
 interface ActionRapideProps {
   title: string
@@ -22,13 +23,13 @@ const ActionRapide = ({ title, description, icon, onClick, className = "" }: Act
       onClick={onClick}
       className={`
         group relative flex flex-col items-center justify-center p-4 
-        bg-white rounded-lg border border-gray-200 
+        bg-white rounded-lg  
      
         ${className}
       `}
     >
       <div className="flex flex-col items-center space-y-2">
-        <div className="p-2 rounded-full  text-[#f97316] group-hover:bg-[#f97316] transition-colors">
+        <div className="p-2 rounded-full  text-[#f97316]  transition-colors">
           {icon}
         </div>
         <span className="text-sm font-medium text-gray-900 text-center leading-tight">
@@ -40,7 +41,7 @@ const ActionRapide = ({ title, description, icon, onClick, className = "" }: Act
           </span>
         )}
       </div>
-      
+
       {/* Effet hover subtil */}
       <div className="absolute inset-0 bg-blue-50 rounded-lg opacity-0 group-hover:opacity-5 transition-opacity" />
     </button>
@@ -49,7 +50,7 @@ const ActionRapide = ({ title, description, icon, onClick, className = "" }: Act
 
 
 export const ActionsRapides = ({ className = "" }: ActionsRapidesProps) => {
-const router = useRouter();
+  const router = useRouter();
 
   const actions = [
     {
@@ -68,7 +69,7 @@ const router = useRouter();
       icon: <UserCheck className="h-5 w-5" />,
       onClick: () => {
         console.log("Valider KYC")
-                router.push('/Tableau-bord/kyc');
+        router.push('/Tableau-bord/kyc');
 
       }
     },
@@ -93,24 +94,22 @@ const router = useRouter();
   ]
 
   return (
-    <div className={`bg-white rounded-lg border border-gray-200 p-6 ${className}`}>
-      <div className="mb-4">
-        <h2 className="text-lg font-semibold text-gray-900">Actions Rapides</h2>
-        <p className="text-sm text-gray-600 mt-1">Accédez rapidement aux fonctions principales</p>
-      </div>
-      
-      {/* Grid responsive */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {actions.map((action, index) => (
-          <ActionRapide
-            key={index}
-            title={action.title}
-            description={action.description}
-            icon={action.icon}
-            onClick={action.onClick}
-          />
-        ))}
-      </div>
-    </div>
+      <Card className="mb-4 className={`bg-white rounded-lg  p-6 ${className}`}">
+        <CardTitle>Actions Rapides</CardTitle>
+        <CardDescription>Accédez rapidement aux fonctions principales</CardDescription>
+        <CardContent className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {actions.map((action, index) => (
+            <ActionRapide
+              key={index}
+              title={action.title}
+              description={action.description}
+              icon={action.icon}
+              onClick={action.onClick}
+            />
+          ))}
+        </CardContent>
+      </Card>
+
+
   )
 }

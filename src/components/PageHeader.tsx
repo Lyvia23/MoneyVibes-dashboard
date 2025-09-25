@@ -59,7 +59,7 @@ export function PageHeader({
   }
 
   return (
-    <div className={cn("border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm", className)}>
+    <div className={cn("bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm", className)}>
       <div className="flex h-24 md:h-32 items-center px-6 md:px-8">
         {/* Action gauche (bouton toggle sidebar) */}
         {leftAction && (

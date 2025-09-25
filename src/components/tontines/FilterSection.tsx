@@ -42,7 +42,7 @@ export const FilterSection = ({
               placeholder="Rechercher une tontine..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 h-10 sm:h-11 border border-gray-200 text-sm"
+              className="pl-10 pr-4 h-10 sm:h-11  text-sm"
             />
           </div>
         </div>
@@ -55,7 +55,7 @@ export const FilterSection = ({
               Type de tontine
             </label>
             <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="border border-gray-200 h-10 sm:h-11 text-sm">
+              <SelectTrigger className=" h-10 sm:h-11 text-sm">
                 <SelectValue placeholder="Type" />
               </SelectTrigger>
               <SelectContent>
@@ -77,7 +77,7 @@ export const FilterSection = ({
               placeholder="Date début"
               value={dateDebutFilter}
               onChange={(e) => setDateDebutFilter(e.target.value)}
-              className="border border-gray-200 text-black h-10 sm:h-11 text-sm"
+              className=" text-black h-10 sm:h-11 text-sm"
             />
           </div>
 
@@ -91,7 +91,7 @@ export const FilterSection = ({
               placeholder="Date fin"
               value={dateFinFilter}
               onChange={(e) => setDateFinFilter(e.target.value)}
-              className="border border-gray-200 text-black h-10 sm:h-11 text-sm"
+              className=" text-black h-10 sm:h-11 text-sm"
             />
           </div>
 

@@ -1,15 +1,16 @@
 "use client"
 
 import { Tontine } from "@/src/types/tontine";
-import { CheckCircle, CircleDollarSignIcon, Clock, DollarSign, HelpCircle, Ticket, Timer, Users, Users2, Wallet2, Search, Filter, Grid3X3, Table2, Edit, Trash2, MoreHorizontal, Calendar, MapPin } from 'lucide-react';
+import { CheckCircle, CircleDollarSignIcon, Clock, DollarSign, HelpCircle, Ticket, Timer, Users, Users2, Wallet2, Search, Filter, Grid3X3, Table2, Edit, Trash2, MoreHorizontal, Calendar, MapPin, Eye } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/src/components/ui/dropdown-menu';
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 
-export const TableView = ({ tontines, onEdit, onDelete }: { 
-  tontines: Tontine[], 
-  onEdit: (id: string) => void, 
-  onDelete: (id: string) => void 
+export const TableView = ({ tontines, onEdit, onDelete, onView }: {
+  tontines: Tontine[],
+  onEdit: (id: string) => void,
+  onDelete: (id: string) => void,
+  onView: (id: string) => void
 }) => {
   const getTypeColor = (type: string) => {
     switch (type) {
@@ -83,8 +84,8 @@ export const TableView = ({ tontines, onEdit, onDelete }: {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-blue-600 h-2 rounded-full" 
+                    <div
+                      className="bg-blue-600 h-2 rounded-full"
                       style={{ width: `${tontine.progression}%` }}
                     ></div>
                   </div>
@@ -98,11 +99,15 @@ export const TableView = ({ tontines, onEdit, onDelete }: {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
+                      <DropdownMenuItem onClick={() => onView(tontine.id)}>
+                        <Eye className="mr-2 h-4 w-4" />
+                        Voit plus
+                      </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => onEdit(tontine.id)}>
                         <Edit className="mr-2 h-4 w-4" />
                         Modifier
                       </DropdownMenuItem>
-                      <DropdownMenuItem 
+                      <DropdownMenuItem
                         onClick={() => onDelete(tontine.id)}
                         className="text-red-600"
                       >
